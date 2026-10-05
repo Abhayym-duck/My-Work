@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { siteConfig } from "@/data/site";
 import { Container } from "@/components/ui/Container";
-import { PondBanner } from "@/components/layout/PondBanner";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -10,10 +9,6 @@ export function Footer() {
 
   return (
     <footer className="mt-auto border-t border-border">
-      <Container size="wide" className="pt-12">
-        <PondBanner />
-      </Container>
-
       <Container size="wide" className="py-12">
         <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
           <div className="flex flex-col gap-2">

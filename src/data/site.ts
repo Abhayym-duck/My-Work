@@ -13,21 +13,11 @@ export const siteConfig = {
   locale: "en_US",
   email: "hello@example.com",
   avatar: null as string | null,
-  availability: {
-    open: true,
-    label: "Available for Work",
-  },
   hero: {
-    greeting: "Hey, I'm Abhay",
-    headline: "I design products people enjoy using.",
+    lines: ["Hey, I'm Abhay.", "I design products & sleep."],
     subtext:
-      "I've been crafting digital products and interfaces for the past 6 years.",
+      "I have around 3 years of experience designing digital products, and around 23 years of experience sleeping",
   },
-  stats: [
-    { value: "6+", label: "Years experience" },
-    { value: "20+", label: "Projects shipped" },
-    { value: "3", label: "Markets launched in" },
-  ],
   social: {
     twitter: "https://x.com/example",
     linkedin: "https://linkedin.com/in/example",
@@ -43,12 +33,10 @@ export const siteConfig = {
     "product design",
   ],
   navLinks: [
-    { label: "About", href: "/about" },
-    { label: "Services", href: "/services" },
+    { label: "Home", href: "/" },
     { label: "Projects", href: "/work" },
-    { label: "Shop", href: "/shop" },
-    { label: "Blog", href: "/blog" },
-    { label: "Contact", href: "/contact" },
+    { label: "About", href: "/about" },
+    { label: "Resume", href: "/resume.pdf" },
   ],
 } as const;
 

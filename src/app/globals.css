@@ -22,29 +22,28 @@
   --color-neutral-900: #18181b;
   --color-neutral-950: #09090b;
 
-  /* ---- Color: semantic tokens (resolve to neutral scale for now) ---- */
-  --color-background: var(--color-neutral-0);
-  --color-foreground: var(--color-neutral-900);
-  --color-muted: var(--color-neutral-500);
-  --color-muted-foreground: var(--color-neutral-600);
-  --color-border: var(--color-neutral-200);
-  --color-surface: var(--color-neutral-50);
+  /* ---- Color: semantic tokens ---- */
+  --color-background: #f7f7f8;
+  --color-foreground: #433c50;
+  --color-muted: #8a8294;
+  --color-muted-foreground: #6d6777;
+  --color-border: #f3f3f3;
+  --color-surface: #fcfafa;
   --color-surface-hover: var(--color-neutral-100);
-  --color-accent: var(--color-neutral-900);
+  --color-accent: #433c50;
   --color-accent-foreground: var(--color-neutral-0);
   --color-inverted-background: var(--color-neutral-900);
   --color-inverted-foreground: var(--color-neutral-0);
 
-  /* ---- Color: brand (echoes the koi in the footer pond) ---- */
+  /* ---- Color: brand (echoes the red retro monitor in the hero) ---- */
   --color-brand: #c2542e;
   --color-brand-hover: #a8451f;
   --color-brand-foreground: #fdf6f1;
   --color-brand-soft: #fbe9e0;
 
   /* ---- Typography ---- */
-  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-fraunces), ui-serif, Georgia, serif;
-  --font-mono: ui-monospace, "SFMono-Regular", monospace;
+  --font-sans: var(--font-jetbrains-mono), ui-monospace, "SFMono-Regular", monospace;
+  --font-mono: var(--font-sans);
   --font-display: var(--font-sans);
 
   /* Fluid type scale — adjusts smoothly across breakpoints */
@@ -108,21 +107,7 @@
   --z-toast: 70;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: var(--color-neutral-950);
-    --color-foreground: var(--color-neutral-100);
-    --color-muted: var(--color-neutral-400);
-    --color-muted-foreground: var(--color-neutral-400);
-    --color-border: var(--color-neutral-800);
-    --color-surface: var(--color-neutral-900);
-    --color-surface-hover: var(--color-neutral-800);
-    --color-accent: var(--color-neutral-0);
-    --color-accent-foreground: var(--color-neutral-900);
-    --color-inverted-background: var(--color-neutral-0);
-    --color-inverted-foreground: var(--color-neutral-900);
-  }
-}
+/* Site is light-theme only by design — no dark mode override. */
 
 /* Bridge tokens into Tailwind's utility engine (v4 CSS-first config) */
 @theme inline {
@@ -144,7 +129,6 @@
   --color-brand-soft: var(--color-brand-soft);
 
   --font-sans: var(--font-sans);
-  --font-serif: var(--font-serif);
   --font-mono: var(--font-mono);
 
   --container-content: var(--container-content);
@@ -200,65 +184,4 @@ body {
 :focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
-}
-
-/* ---- Pond banner (footer) ambient motion ---- */
-@keyframes swim-a {
-  0%,
-  100% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-  50% {
-    transform: translate(26px, -8px) rotate(4deg);
-  }
-}
-
-@keyframes swim-b {
-  0%,
-  100% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-  50% {
-    transform: translate(-32px, 9px) rotate(-5deg);
-  }
-}
-
-@keyframes swim-c {
-  0%,
-  100% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-  50% {
-    transform: translate(20px, 12px) rotate(3deg);
-  }
-}
-
-@keyframes swim-d {
-  0%,
-  100% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-  50% {
-    transform: translate(-22px, -10px) rotate(-4deg);
-  }
-}
-
-@keyframes drift-cloud {
-  0%,
-  100% {
-    transform: translateX(0);
-  }
-  50% {
-    transform: translateX(16px);
-  }
-}
-
-@keyframes sway-pad {
-  0%,
-  100% {
-    transform: translateY(0) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-2px) rotate(1deg);
-  }
 }
