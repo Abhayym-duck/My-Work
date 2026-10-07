@@ -31,7 +31,7 @@ const services = [
 
 export default function ServicesPage() {
   return (
-    <Section spacing="default" as="div">
+    <Section spacing="default" as="div" className="pt-16">
       <SectionHeading
         as="h1"
         eyebrow="Services"

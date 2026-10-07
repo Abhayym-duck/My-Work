@@ -18,7 +18,7 @@ export default function WorkPage() {
   const projects = getAllProjects();
 
   return (
-    <Section spacing="default" as="div">
+    <Section spacing="default" as="div" className="pt-16">
       <SectionHeading
         as="h1"
         eyebrow="Work"

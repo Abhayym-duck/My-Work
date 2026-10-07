@@ -19,7 +19,7 @@ export function CaseStudyLayout({ project }: { project: Project }) {
 
   return (
     <article>
-      <div className="mx-auto max-w-5xl px-6 pt-10 sm:pt-16">
+      <div className="mx-auto max-w-5xl px-6 pt-16">
         <div className="flex items-center gap-2 text-xs font-medium tracking-wide text-[var(--cs-muted)] uppercase">
           <span>{project.category}</span>
           <span aria-hidden>·</span>

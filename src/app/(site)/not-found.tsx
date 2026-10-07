@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/Button";
 
 export default function NotFound() {
   return (
-    <Section spacing="default" as="div" className="text-center">
+    <Section spacing="default" as="div" className="pt-16 text-center">
       <p className="text-sm font-medium uppercase tracking-(--tracking-wide) text-muted">
         404
       </p>

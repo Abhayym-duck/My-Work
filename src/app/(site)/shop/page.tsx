@@ -12,7 +12,7 @@ export const metadata: Metadata = buildMetadata({
 
 export default function ShopPage() {
   return (
-    <Section spacing="default" as="div">
+    <Section spacing="default" as="div" className="pt-16">
       <SectionHeading
         as="h1"
         eyebrow="Shop"
