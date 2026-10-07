@@ -1,103 +1,134 @@
 import Link from "next/link";
-import { Archive, Settings, MoreHorizontal } from "lucide-react";
-
-const FOLDER_CLIP =
-  "polygon(6% 0%, 40% 0%, 46% 6%, 46% 16%, 94% 16%, 100% 22%, 100% 94%, 94% 100%, 6% 100%, 0% 94%, 0% 6%)";
+import type { CSSProperties } from "react";
 
 const folders = [
-  {
-    slug: "padel-iq",
-    name: "Padel IQ",
-    notes: 58,
-    date: "Wed, 07 May 2025",
-    time: "16:34",
-  },
+  { slug: "redfox-courier", name: "RedFox Courier", role: "Logistics", color: "#ff8a3d" },
   {
     slug: "design-editor",
     name: "Design Editor",
-    notes: 34,
-    date: "Mon, 12 Feb 2024",
-    time: "11:02",
+    role: "Design Tools",
+    color: "#9d8cff",
   },
   {
     slug: "automation-suite",
     name: "Automation Suite",
-    notes: 41,
-    date: "Thu, 19 Sep 2024",
-    time: "09:47",
+    role: "Product Design",
+    color: "#4fd8a0",
   },
   {
     slug: "onboarding-revamp",
     name: "Onboarding",
-    notes: 23,
-    date: "Fri, 03 Nov 2023",
-    time: "14:16",
+    role: "UX Research",
+    color: "#ff5c7a",
   },
 ];
 
-function FolderCard({ folder }: { folder: (typeof folders)[number] }) {
+// Stepped (pixel-style) folder outline: tab + body as ONE connected path.
+// Drawn in a 100x100 box and stretched, so strokes use non-scaling-stroke.
+const FOLDER_OUTLINE =
+  "M0,17 L0,6 L2,6 L2,0 L22,0 L22,6 L27,6 L27,17 L100,17 L100,100 L0,100 Z";
+
+// Solid-filled tab block sitting on the body's top edge.
+const TAB_FILL = "M2,6 L2,2 L22,2 L22,6 L27,6 L27,17 L2,17 Z";
+
+function PixelArrow() {
+  return (
+    <svg
+      viewBox="0 0 9 9"
+      className="crt-arrow h-[3.4cqw] w-[3.4cqw] shrink-0"
+      shapeRendering="crispEdges"
+      fill="currentColor"
+      aria-hidden
+    >
+      <rect x="0" y="4" width="8" height="1" />
+      <rect x="5" y="1" width="1" height="1" />
+      <rect x="6" y="2" width="1" height="1" />
+      <rect x="7" y="3" width="1" height="1" />
+      <rect x="7" y="5" width="1" height="1" />
+      <rect x="6" y="6" width="1" height="1" />
+      <rect x="5" y="7" width="1" height="1" />
+    </svg>
+  );
+}
+
+function FolderItem({ folder }: { folder: (typeof folders)[number] }) {
   return (
     <Link
       href={`/work/${folder.slug}`}
-      className="group relative block h-full w-full"
+      className="crt-item group relative block h-full min-h-0 w-full"
+      style={{ "--accent": folder.color } as CSSProperties}
     >
-      {/* Note peeking out, revealed on hover */}
-      <div
-        className="absolute inset-x-[6%] top-0 flex h-[55%] -translate-y-2 flex-col justify-between rounded-xl border border-border bg-background px-[8%] py-[7%] opacity-0 shadow-(--shadow-md) transition-all duration-(--duration-default) ease-(--ease-default) group-hover:translate-y-0 group-hover:opacity-100"
+      <svg
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        className="crt-glow absolute inset-0 h-full w-full overflow-visible"
         aria-hidden
       >
-        <div className="flex min-w-0 items-center justify-between gap-1.5">
-          <span className="min-w-0 truncate text-[9px] font-medium text-foreground sm:text-[11px] md:text-xs">
-            {folder.date}
-          </span>
-          <span className="shrink-0 rounded-(--radius-sm) bg-surface px-1.5 py-0.5 text-[8px] font-medium text-muted-foreground sm:text-[10px] md:text-[11px]">
-            {folder.time}
-          </span>
-        </div>
-        <MoreHorizontal size={12} className="self-end text-muted-foreground" />
-      </div>
+        <path d={TAB_FILL} className="crt-tab" />
+        <path
+          d={FOLDER_OUTLINE}
+          className="crt-border"
+          strokeWidth="3.5"
+          strokeLinejoin="miter"
+          vectorEffect="non-scaling-stroke"
+        />
+        {/* thin inner border */}
+        <rect
+          x="2"
+          y="21"
+          width="96"
+          height="76"
+          fill="none"
+          className="crt-inner"
+          strokeWidth="2"
+          vectorEffect="non-scaling-stroke"
+        />
+      </svg>
 
-      {/* Folder */}
-      <div
-        className="absolute inset-0 flex flex-col justify-between bg-gradient-to-br from-[#7b7ff4] to-[#2f33c7] px-[8%] pt-[20%] pb-[7%] transition-transform duration-(--duration-default) ease-(--ease-default) group-hover:-translate-y-1"
-        style={{ clipPath: FOLDER_CLIP }}
-      >
-        <div className="flex min-w-0 items-start justify-between gap-1.5">
-          <div className="flex min-w-0 flex-col gap-0.5">
-            <span className="truncate text-[10px] font-semibold text-white sm:text-sm md:text-base">
-              {folder.name}
-            </span>
-            <span className="truncate text-[9px] text-white/70 sm:text-[11px] md:text-xs">
-              {folder.notes} notes
-            </span>
-          </div>
-          <div className="flex shrink-0 items-center gap-1 text-white/80 sm:gap-1.5">
-            <Archive size={12} className="hidden sm:block" aria-hidden />
-            <Archive size={10} className="sm:hidden" aria-hidden />
-            <Settings size={12} className="hidden sm:block" aria-hidden />
-            <Settings size={10} className="sm:hidden" aria-hidden />
-          </div>
+      <div className="absolute inset-x-[4%] bottom-[5%] top-[21%] flex items-center justify-between gap-[1.5cqw] px-[4%]">
+        <div className="min-w-0 text-left">
+          <p className="truncate text-[3.3cqw] font-bold leading-tight tracking-tight">
+            {folder.name}
+            <span className="crt-cursor ml-[0.4cqw] inline-block h-[2.4cqw] w-[1.3cqw] translate-y-[0.3cqw] bg-current align-baseline" />
+          </p>
+          <p className="mt-[0.4cqw] truncate text-[2cqw] leading-tight opacity-85">
+            {folder.role}
+          </p>
         </div>
+        <PixelArrow />
       </div>
     </Link>
   );
 }
 
-/** Project folders rendered inside the hero illustration's monitor screen. */
+/** Project menu rendered as native UI inside the hero monitor's CRT screen. */
 export function ScreenFolders() {
   return (
     <div
-      className="absolute box-border grid grid-cols-2 grid-rows-2 gap-[5%] p-[4%]"
+      className="crt-screen @container absolute box-border flex flex-col overflow-hidden px-[3.6%] pb-[3.2%] pt-[2.6%]"
       style={{
         left: "20.9%",
         top: "20.3%",
         width: "57.2%",
         height: "34.1%",
+        borderRadius: "1.5%",
+        containerType: "inline-size",
       }}
     >
-      {folders.map((folder) => (
-        <FolderCard key={folder.slug} folder={folder} />
-      ))}
+      <div className="flex items-baseline justify-between border-b-2 border-[#ff8a3d]/40 pb-[0.9cqw] text-[1.6cqw] font-semibold leading-none tracking-[0.12em] text-[#ff8a3d]/85">
+        <span>PROJECTS/</span>
+        <span>04 ITEMS</span>
+      </div>
+
+      <div className="mt-[3cqw] grid min-h-0 flex-1 grid-cols-2 grid-rows-2 gap-x-[6cqw] gap-y-[5cqw]">
+        {folders.map((folder) => (
+          <FolderItem key={folder.slug} folder={folder} />
+        ))}
+      </div>
+
+      <div className="crt-roll" aria-hidden />
+      <div className="crt-overlay" aria-hidden />
+      <div className="crt-noise" aria-hidden />
     </div>
   );
 }

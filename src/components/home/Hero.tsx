@@ -6,7 +6,7 @@ export function Hero() {
   const { hero } = siteConfig;
 
   return (
-    <section className="flex flex-col items-center px-6 pt-20 text-center sm:pt-24">
+    <section className="font-jb flex flex-col items-center px-6 pt-32 text-center sm:pt-40">
       <h1 className="max-w-[835px] text-[32px] leading-[1.3] font-medium text-foreground sm:text-[48px] sm:leading-[62.4px]">
         {hero.lines.map((line) => (
           <span key={line} className="block">

@@ -26,9 +26,9 @@ export default function WorkPage() {
         description="Every project below links to a full case study covering the challenge, process, and outcome."
       />
 
-      <StaggerContainer className="mt-12 grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+      <StaggerContainer className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
         {projects.map((project) => (
-          <Reveal key={project.slug} as="div">
+          <Reveal key={project.slug} as="div" className="h-full">
             <ProjectCard project={project} />
           </Reveal>
         ))}

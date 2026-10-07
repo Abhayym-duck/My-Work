@@ -1,4 +1,5 @@
 import type { Project } from "@/types/project";
+import { redfoxCourierStory } from "@/data/stories/redfox-courier";
 
 /**
  * Add a new project by appending an object to this array — the /work
@@ -7,46 +8,35 @@ import type { Project } from "@/types/project";
  */
 export const projects: Project[] = [
   {
-    slug: "padel-iq",
-    title: "AI-powered padel intelligence platform",
-    shortDescription:
-      "Scaling the new design to 3 international markets (Dubai, London, Spain).",
+    slug: "redfox-courier",
+    title: "RedFox Courier",
+    shortDescription: "International shipping, without the logistics headache.",
     category: "Product Design",
     year: 2025,
-    role: "Lead Product Designer",
-    tools: ["Figma", "FigJam", "Maze"],
+    role: "Product Designer",
+    tools: ["Figma"],
     coverImage: {
-      src: "/images/projects/padel-iq/cover.svg",
-      alt: "Cover artwork for the AI-powered padel intelligence platform",
+      src: "/images/projects/redfox-courier/cover.svg",
+      alt: "Cover artwork for the RedFox Courier case study",
       width: 1600,
       height: 1200,
     },
     galleryImages: [],
     challenge:
-      "Coaches and clubs had no unified way to turn match footage into actionable player insights across regions with very different levels of digital maturity.",
+      "International shipping spans quotes, duties, customs, carriers and tracking — a lot for users to understand at once.",
     solution:
-      "Designed an AI-assisted analytics workspace that surfaces player performance trends automatically, with a rollout plan tailored to each market's device and connectivity constraints.",
-    process: [
-      "Field research with coaches in Dubai, London, and Spain",
-      "Concept exploration for the AI insights workspace",
-      "Usability testing across markets",
-      "Phased visual design and engineering handoff",
-    ],
-    outcomes: [
-      "Launched in 3 international markets within two quarters.",
-      "Coach engagement with the insights dashboard up 3x post-launch.",
-    ],
-    metrics: [
-      { label: "Markets launched", value: "3", description: "Dubai, London, Spain" },
-      { label: "Coach engagement", value: "3x" },
-    ],
+      "A connected shipping experience that reveals complexity progressively, from quote to delivery and operations.",
+    process: [],
+    outcomes: [],
+    metrics: [],
     seo: {
-      title: "AI-powered padel intelligence platform — Case Study",
+      title: "RedFox Courier — Case Study",
       description:
-        "Scaling an AI-assisted analytics platform for padel coaches across 3 international markets.",
-      keywords: ["product design case study", "sports tech", "AI analytics"],
-      ogImage: "/images/projects/padel-iq/cover.svg",
+        "Designing one connected international shipping experience: quotes, cost clarity, carrier comparison, tracking and operations.",
+      keywords: ["product design case study", "logistics UX", "shipping"],
+      ogImage: "/images/projects/redfox-courier/cover.svg",
     },
+    story: redfoxCourierStory,
     featured: true,
     published: true,
   },
@@ -91,6 +81,89 @@ export const projects: Project[] = [
       keywords: ["product design case study", "onboarding", "editor UX"],
       ogImage: "/images/projects/design-editor/cover.svg",
     },
+    patterns: [
+      {
+        tags: ["Onboarding", "Reduced Friction"],
+        title: "Templates replace the blank canvas",
+        image: {
+          src: "/images/projects/design-editor/cover.svg",
+          alt: "Template picker placeholder mockup",
+          width: 1600,
+          height: 1200,
+        },
+        sections: [
+          {
+            label: "Why it works",
+            content:
+              "A blank canvas asks a non-designer to make a dozen decisions before they've made any progress. A template starts them at 'edit this' instead of 'invent this.'",
+          },
+          {
+            label: "When to apply it",
+            content:
+              "This pattern pays off most when your power users and your first-time users want fundamentally different starting points — don't force both down the same empty-canvas door.",
+          },
+          {
+            label: "What often goes wrong",
+            content:
+              "Template libraries that look impressive but aren't filtered by intent just become a second decision paralysis screen in front of the first one.",
+          },
+        ],
+      },
+      {
+        tags: ["Progressive Disclosure"],
+        title: "Advanced tools stay one tap away, not one click away",
+        image: {
+          src: "/images/projects/design-editor/cover.svg",
+          alt: "Progressive toolbar placeholder mockup",
+          width: 1600,
+          height: 1200,
+        },
+        sections: [
+          {
+            label: "Why it works",
+            content:
+              "Hiding advanced tools entirely protects beginners but frustrates everyone else. Keeping them one predictable gesture away protects beginners without punishing people who already know what they're doing.",
+          },
+          {
+            label: "Implementation considerations",
+            content:
+              "The reveal gesture has to be discoverable through normal use, not something a user has to be told about — otherwise it's functionally the same as hiding the tools entirely.",
+          },
+          {
+            label: "Actionable takeaway",
+            content:
+              "Progressive disclosure only works if the 'progression' is something users stumble into naturally, not a feature they have to go looking for.",
+          },
+        ],
+      },
+      {
+        tags: ["Trust", "Error Recovery"],
+        title: "Undo is always visible, never buried",
+        image: {
+          src: "/images/projects/design-editor/cover.svg",
+          alt: "Undo affordance placeholder mockup",
+          width: 1600,
+          height: 1200,
+        },
+        sections: [
+          {
+            label: "Why it works",
+            content:
+              "First-time users experiment more freely when the cost of a mistake is visibly low. A persistent, always-reachable undo does more for confidence than any onboarding tooltip.",
+          },
+          {
+            label: "Business impact",
+            content:
+              "Session recordings showed a clear link between how often new users touched undo early in a session and whether they published a first design at all.",
+          },
+          {
+            label: "What often goes wrong",
+            content:
+              "Burying undo inside a menu to save toolbar space quietly tells cautious users the product doesn't expect them to make mistakes — which is exactly backwards for this audience.",
+          },
+        ],
+      },
+    ],
     featured: true,
     published: true,
   },
@@ -132,6 +205,84 @@ export const projects: Project[] = [
       keywords: ["UX case study", "marketing tools", "design systems"],
       ogImage: "/images/projects/automation-suite/cover.svg",
     },
+    patterns: [
+      {
+        tags: ["Information Architecture", "Consolidation"],
+        title: "One calendar replaces three separate tools",
+        image: {
+          src: "/images/projects/automation-suite/cover.svg",
+          alt: "Unified calendar placeholder mockup",
+          width: 1600,
+          height: 1200,
+        },
+        sections: [
+          {
+            label: "Why it works",
+            content:
+              "Small business owners don't think of email, social, and scheduling as separate jobs — they think of 'getting this campaign out.' One calendar matches how they actually plan their week.",
+          },
+          {
+            label: "Business impact",
+            content:
+              "Consolidating the view didn't just save clicks — it surfaced scheduling conflicts (a social post and an email landing the same hour) that used to go unnoticed across three disconnected tools.",
+          },
+          {
+            label: "Implementation considerations",
+            content:
+              "Merging three tools' worth of status states into one calendar meant agreeing on a single shared vocabulary for 'draft,' 'scheduled,' and 'live' across teams that previously used their own terms.",
+          },
+        ],
+      },
+      {
+        tags: ["Visual Hierarchy", "Scannability"],
+        title: "Campaign status uses color before it uses words",
+        image: {
+          src: "/images/projects/automation-suite/cover.svg",
+          alt: "Status color-coding placeholder mockup",
+          width: 1600,
+          height: 1200,
+        },
+        sections: [
+          {
+            label: "Why it works",
+            content:
+              "A busy owner scanning a week of campaigns shouldn't have to read every label. Color lets 'what needs my attention' register before any text does.",
+          },
+          {
+            label: "When to apply it",
+            content:
+              "This earns its complexity when users are scanning many items quickly under time pressure — it's overkill for a screen with two or three statuses total.",
+          },
+          {
+            label: "What often goes wrong",
+            content:
+              "Color-only status systems exclude colorblind users and anyone skimming in bright sunlight on a phone — color should reinforce a label, not replace it entirely.",
+          },
+        ],
+      },
+      {
+        tags: ["Onboarding", "Commitment"],
+        title: "Guided setup commits users one small step at a time",
+        image: {
+          src: "/images/projects/automation-suite/cover.svg",
+          alt: "Guided setup flow placeholder mockup",
+          width: 1600,
+          height: 1200,
+        },
+        sections: [
+          {
+            label: "Why it works",
+            content:
+              "Asking a new user to configure scheduling, email, and social in one long form invites abandonment. Breaking it into small, individually-completable steps turns setup into a series of easy yeses.",
+          },
+          {
+            label: "Actionable takeaway",
+            content:
+              "Measure setup funnels step-by-step, not just start-to-finish — the step with the steepest drop-off tells you exactly where the form is asking for too much too soon.",
+          },
+        ],
+      },
+    ],
     featured: true,
     published: true,
   },
@@ -173,6 +324,89 @@ export const projects: Project[] = [
       keywords: ["UX research case study", "onboarding", "activation"],
       ogImage: "/images/projects/onboarding-revamp/cover.svg",
     },
+    patterns: [
+      {
+        tags: ["Clarity", "Activation"],
+        title: "Every screen points at one milestone",
+        image: {
+          src: "/images/projects/onboarding-revamp/cover.svg",
+          alt: "Single-milestone onboarding placeholder mockup",
+          width: 1600,
+          height: 1200,
+        },
+        sections: [
+          {
+            label: "Why it works",
+            content:
+              "The old flow introduced the product's full feature set up front. The new one asks only 'have you reached first value yet?' at every step, which gave every screen a single, unambiguous job.",
+          },
+          {
+            label: "When to apply it",
+            content:
+              "This works when a product has one clear activation moment. If there are several equally valid 'first wins,' forcing a single milestone can actually mislead some user segments.",
+          },
+          {
+            label: "Implementation considerations",
+            content:
+              "Defining the milestone required pulling actual retention data, not just a product team's opinion of what 'aha' should look like.",
+          },
+        ],
+      },
+      {
+        tags: ["Motivation", "Progress Indicators"],
+        title: "Progress is shown before it's earned",
+        image: {
+          src: "/images/projects/onboarding-revamp/cover.svg",
+          alt: "Progress indicator placeholder mockup",
+          width: 1600,
+          height: 1200,
+        },
+        sections: [
+          {
+            label: "Why it works",
+            content:
+              "A visible progress bar that starts partially filled (rather than at zero) leverages the same endowed-progress effect used in loyalty programs — users are more likely to finish something they've already 'started.'",
+          },
+          {
+            label: "What often goes wrong",
+            content:
+              "Overstating progress erodes trust fast — if the bar says 80% and the user clearly isn't close to done, every future progress indicator in the product stops being believed.",
+          },
+          {
+            label: "Accessibility angle",
+            content:
+              "The progress state needs a text equivalent for screen readers, not just a visual bar — 'step 2 of 4' should always be present in the markup, not implied by color or fill width alone.",
+          },
+        ],
+      },
+      {
+        tags: ["Measurement", "Business Impact"],
+        title: "The A/B test measured activation, not clicks",
+        image: {
+          src: "/images/projects/onboarding-revamp/cover.svg",
+          alt: "Activation funnel measurement placeholder mockup",
+          width: 1600,
+          height: 1200,
+        },
+        sections: [
+          {
+            label: "Why it works",
+            content:
+              "Early tests optimized for onboarding completion rate, which quietly rewarded flows that were just shorter, not more effective. Switching the success metric to week-one retention changed which version actually won.",
+          },
+          {
+            label: "Business impact",
+            content:
+              "The variant with the higher completion rate actually retained worse — it was correctly flagged as a loss once retention, not completion, was the metric being tested.",
+          },
+          {
+            label: "Actionable takeaway",
+            content:
+              "Pick the A/B test metric that's closest to the business outcome you actually care about, even if it takes longer to reach significance than an easier proxy metric would.",
+          },
+        ],
+      },
+    ],
     featured: true,
     published: true,
   },

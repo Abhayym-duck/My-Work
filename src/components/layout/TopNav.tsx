@@ -12,13 +12,16 @@ export function TopNav() {
   const pathname = usePathname();
 
   return (
-    <div className="sticky top-6 z-(--z-header) flex justify-center px-4">
+    <div className="font-jb sticky top-6 z-(--z-header) flex justify-center px-4">
       <nav
         aria-label="Primary"
         className="flex items-center gap-8 rounded-(--radius-full) border border-[#f3f3f3] bg-[#fcfafa] px-5 py-3.5 shadow-[0px_4px_2px_rgba(0,0,0,0.04)]"
       >
         {siteConfig.navLinks.map((link) => {
-          const isActive = pathname === link.href;
+          const isActive =
+            link.href === "/"
+              ? pathname === "/"
+              : pathname === link.href || pathname.startsWith(`${link.href}/`);
           const external = link.href.endsWith(".pdf");
           return (
             <Link

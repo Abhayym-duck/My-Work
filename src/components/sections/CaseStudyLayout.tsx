@@ -1,136 +1,132 @@
+import Image from "next/image";
 import type { Project } from "@/types/project";
-import { Container } from "@/components/ui/Container";
-import { Tag } from "@/components/ui/Tag";
-import { ImageWrapper } from "@/components/ui/ImageWrapper";
-import { Reveal } from "@/components/motion/Reveal";
+import { getAllProjects } from "@/data/projects";
+import { PatternsSection } from "@/components/case-study/PatternsSection";
+import { SimilarLessons } from "@/components/case-study/SimilarLessons";
+import { StoryBody } from "@/components/case-study/StoryBody";
+import { StoryRelated } from "@/components/case-study/StoryRelated";
+import { ImagePlaceholder } from "@/components/case-study/ImagePlaceholder";
 
 /**
- * Renders a full case study page body from a Project record. Adding a new
- * project only requires adding data — this layout stays the same.
+ * Renders a full case study page body from a Project record. Projects with
+ * `patterns` get the pattern-by-pattern breakdown template; others fall
+ * back to a simple challenge/solution/outcomes layout.
  */
 export function CaseStudyLayout({ project }: { project: Project }) {
+  const related = getAllProjects()
+    .filter((p) => p.slug !== project.slug)
+    .slice(0, 4);
+
   return (
     <article>
-      <Container size="narrow" className="pt-12 sm:pt-20">
-        <Reveal>
-          <div className="flex flex-col gap-6">
-            <div className="flex flex-wrap gap-2">
-              <Tag>{project.category}</Tag>
-              <Tag>{project.year}</Tag>
-              <Tag>{project.role}</Tag>
-            </div>
-            <h1 className="text-4xl font-semibold tracking-(--tracking-tight) text-balance sm:text-5xl">
-              {project.title}
-            </h1>
-            <p className="max-w-(--container-content) text-lg text-muted-foreground text-pretty">
-              {project.shortDescription}
-            </p>
-          </div>
-        </Reveal>
-      </Container>
+      <div className="mx-auto max-w-5xl px-6 pt-10 sm:pt-16">
+        <div className="flex items-center gap-2 text-xs font-medium tracking-wide text-[var(--cs-muted)] uppercase">
+          <span>{project.category}</span>
+          <span aria-hidden>·</span>
+          <span>{project.role}</span>
+          <span aria-hidden>·</span>
+          <span>Case Study</span>
+        </div>
 
-      <Container size="wide" className="mt-12 sm:mt-16">
-        <Reveal>
-          <ImageWrapper
-            src={project.coverImage.src}
-            alt={project.coverImage.alt}
-            width={project.coverImage.width}
-            height={project.coverImage.height}
-            priority
-            className="aspect-16/10"
-          />
-        </Reveal>
-      </Container>
+        <h1 className="mt-3 text-3xl font-bold text-balance text-[var(--cs-fg)] sm:text-4xl">
+          {project.title}
+        </h1>
 
-      <Container size="narrow" className="flex flex-col gap-16 py-16 sm:py-24">
-        <Reveal as="section" className="grid grid-cols-1 gap-8 sm:grid-cols-2">
-          <div>
-            <h2 className="text-sm font-medium uppercase tracking-(--tracking-wide) text-muted">
-              Challenge
-            </h2>
-            <p className="mt-3 text-base text-foreground text-pretty">
-              {project.challenge}
-            </p>
-          </div>
-          <div>
-            <h2 className="text-sm font-medium uppercase tracking-(--tracking-wide) text-muted">
-              Solution
-            </h2>
-            <p className="mt-3 text-base text-foreground text-pretty">
-              {project.solution}
-            </p>
-          </div>
-        </Reveal>
+        <p className="mt-3 max-w-2xl text-base text-[var(--cs-muted)] text-pretty">
+          {project.shortDescription}
+        </p>
 
-        {project.process.length > 0 && (
-          <Reveal as="section">
-            <h2 className="text-sm font-medium uppercase tracking-(--tracking-wide) text-muted">
-              Process
-            </h2>
-            <ol className="mt-4 flex flex-col gap-3">
-              {project.process.map((step, index) => (
-                <li key={step} className="flex gap-4 text-base">
-                  <span className="text-muted-foreground tabular-nums">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <span>{step}</span>
-                </li>
+        {project.story && (
+          <>
+            <dl className="mt-8 grid grid-cols-1 gap-4 border-y border-[var(--cs-border)] py-6 sm:grid-cols-[8rem_1fr] sm:gap-x-6">
+              {project.story.meta.map((item) => (
+                <div key={item.label} className="contents">
+                  <dt className="text-xs font-semibold tracking-wide text-[var(--cs-muted)] uppercase sm:pt-0.5">
+                    {item.label}
+                  </dt>
+                  <dd className="text-[15px] text-[var(--cs-fg)]">
+                    {item.value}
+                  </dd>
+                </div>
               ))}
-            </ol>
-          </Reveal>
+            </dl>
+            <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-[var(--cs-muted)]">
+              {project.story.intro}
+            </p>
+          </>
         )}
+      </div>
 
-        {project.galleryImages.length > 0 && (
-          <Reveal as="section" className="flex flex-col gap-6">
-            {project.galleryImages.map((image) => (
-              <ImageWrapper
-                key={image.src}
-                src={image.src}
-                alt={image.alt}
-                width={image.width}
-                height={image.height}
-              />
-            ))}
-          </Reveal>
+      <div className="mx-auto mt-10 max-w-5xl px-6">
+        {project.story ? (
+          <ImagePlaceholder
+            id={project.story.hero.id}
+            title={project.story.hero.title}
+            brief={project.story.hero.brief}
+          />
+        ) : (
+          <div className="relative aspect-16/9 overflow-hidden rounded-2xl border border-[var(--cs-border)]">
+            <Image
+              src={project.coverImage.src}
+              alt={project.coverImage.alt}
+              fill
+              priority
+              sizes="(min-width: 1024px) 896px, 100vw"
+              className="object-cover"
+            />
+          </div>
         )}
+      </div>
 
-        {(project.outcomes.length > 0 || project.metrics.length > 0) && (
-          <Reveal as="section" className="flex flex-col gap-8">
-            <div>
-              <h2 className="text-sm font-medium uppercase tracking-(--tracking-wide) text-muted">
-                Outcomes
-              </h2>
-              <ul className="mt-4 flex flex-col gap-2">
-                {project.outcomes.map((outcome) => (
-                  <li key={outcome} className="text-base text-pretty">
-                    {outcome}
-                  </li>
-                ))}
-              </ul>
+      <div className="mx-auto max-w-5xl px-6 py-16">
+        {project.story ? (
+          <StoryBody story={project.story} />
+        ) : project.patterns && project.patterns.length > 0 ? (
+          <PatternsSection patterns={project.patterns} />
+        ) : (
+          <div className="flex flex-col gap-16">
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
+              <div>
+                <h2 className="text-sm font-semibold text-[var(--cs-fg)]">
+                  Challenge
+                </h2>
+                <p className="mt-2 text-[15px] text-[var(--cs-muted)]">
+                  {project.challenge}
+                </p>
+              </div>
+              <div>
+                <h2 className="text-sm font-semibold text-[var(--cs-fg)]">
+                  Solution
+                </h2>
+                <p className="mt-2 text-[15px] text-[var(--cs-muted)]">
+                  {project.solution}
+                </p>
+              </div>
             </div>
 
-            {project.metrics.length > 0 && (
-              <dl className="grid grid-cols-2 gap-6 sm:grid-cols-3">
-                {project.metrics.map((metric) => (
-                  <div key={metric.label} className="flex flex-col gap-1">
-                    <dt className="text-sm text-muted-foreground">
-                      {metric.label}
-                    </dt>
-                    <dd className="text-2xl font-semibold tracking-(--tracking-tight)">
-                      {metric.value}
-                    </dd>
-                    {metric.description && (
-                      <span className="text-xs text-muted">
-                        {metric.description}
-                      </span>
-                    )}
-                  </div>
-                ))}
-              </dl>
+            {project.outcomes.length > 0 && (
+              <div>
+                <h2 className="text-sm font-semibold text-[var(--cs-fg)]">
+                  Outcomes
+                </h2>
+                <ul className="mt-3 flex flex-col gap-2">
+                  {project.outcomes.map((outcome) => (
+                    <li key={outcome} className="text-[15px] text-[var(--cs-muted)]">
+                      {outcome}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             )}
-          </Reveal>
+          </div>
         )}
-      </Container>
+      </div>
+
+      {project.story ? (
+        <StoryRelated items={project.story.related} />
+      ) : (
+        <SimilarLessons projects={related} />
+      )}
     </article>
   );
 }

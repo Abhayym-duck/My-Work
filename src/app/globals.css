@@ -42,8 +42,8 @@
   --color-brand-soft: #fbe9e0;
 
   /* ---- Typography ---- */
-  --font-sans: var(--font-jetbrains-mono), ui-monospace, "SFMono-Regular", monospace;
-  --font-mono: var(--font-sans);
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, "SFMono-Regular", monospace;
   --font-display: var(--font-sans);
 
   /* Fluid type scale — adjusts smoothly across breakpoints */
@@ -184,4 +184,148 @@ body {
 :focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
+}
+
+/* ---------- Retro CRT screen (hero project menu) ---------- */
+.crt-screen {
+  background: #11110f;
+  font-family: var(--font-mono);
+  -webkit-font-smoothing: none;
+  text-rendering: optimizeSpeed;
+}
+
+.crt-overlay {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  border-radius: 2.5cqw;
+  background:
+    /* scanlines */
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.16) 0 1px,
+      transparent 1px 3px
+    ),
+    /* vignette / tube falloff */
+    radial-gradient(
+      ellipse at center,
+      transparent 55%,
+      rgba(0, 0, 0, 0.4) 100%
+    );
+  box-shadow: inset 0 0 3cqw rgba(0, 0, 0, 0.55);
+}
+
+.crt-noise {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 21;
+  opacity: 0.06;
+  mix-blend-mode: screen;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.2 -0.35'/></filter><rect width='120' height='120' filter='url(%23n)'/></svg>");
+  animation: crt-noise 0.6s steps(4) infinite;
+}
+
+.crt-roll {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 19;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 255, 255, 0.035) 50%,
+    transparent 100%
+  );
+  background-size: 100% 22%;
+  background-repeat: no-repeat;
+  animation: crt-roll 7s linear infinite;
+}
+
+.crt-item {
+  --accent: #ff8a3d;
+  color: var(--accent);
+  text-shadow: 0 0 0.5cqw color-mix(in srgb, var(--accent) 55%, transparent);
+}
+.crt-item .crt-border {
+  stroke: var(--accent);
+  fill: color-mix(in srgb, var(--accent) 5%, #0d0d0b);
+  transition: stroke 120ms steps(2), fill 120ms steps(2);
+}
+.crt-item .crt-tab {
+  fill: color-mix(in srgb, var(--accent) 85%, transparent);
+}
+.crt-item .crt-inner {
+  stroke: color-mix(in srgb, var(--accent) 45%, transparent);
+}
+.crt-item .crt-glow {
+  filter: drop-shadow(0 0 0.6cqw color-mix(in srgb, var(--accent) 35%, transparent));
+  transition: filter 120ms steps(2);
+}
+.crt-item .crt-cursor {
+  opacity: 0;
+}
+.crt-item:hover .crt-border,
+.crt-item:focus-visible .crt-border {
+  stroke: var(--accent);
+  fill: color-mix(in srgb, var(--accent) 14%, #0d0d0b);
+}
+.crt-item:hover .crt-glow,
+.crt-item:focus-visible .crt-glow {
+  filter: drop-shadow(0 0 0.7cqw color-mix(in srgb, var(--accent) 45%, transparent));
+  animation: crt-flicker 0.18s steps(2) 1;
+}
+.crt-item:hover .crt-cursor,
+.crt-item:focus-visible .crt-cursor {
+  opacity: 1;
+  animation: crt-blink 1s steps(1) infinite;
+}
+.crt-item:hover .crt-arrow,
+.crt-item:focus-visible .crt-arrow {
+  transform: translateX(0.5cqw);
+}
+.crt-item:focus-visible {
+  outline: none;
+}
+.crt-arrow {
+  transition: transform 100ms steps(2);
+}
+
+@keyframes crt-flicker {
+  0% { opacity: 0.82; }
+  50% { opacity: 1; }
+  100% { opacity: 0.92; }
+}
+@keyframes crt-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+@keyframes crt-noise {
+  0% { background-position: 0 0; }
+  25% { background-position: -30px 20px; }
+  50% { background-position: 25px -35px; }
+  75% { background-position: -15px -10px; }
+  100% { background-position: 0 0; }
+}
+@keyframes crt-roll {
+  0% { background-position: 0 -30%; }
+  100% { background-position: 0 130%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crt-noise,
+  .crt-roll,
+  .crt-item .crt-glow,
+  .crt-item .crt-cursor {
+    animation: none !important;
+  }
+  .crt-arrow {
+    transition: none;
+  }
+}
+
+/* JetBrains Mono is reserved for the header and the home page. */
+.font-jb {
+  font-family: var(--font-mono);
 }
