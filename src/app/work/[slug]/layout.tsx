@@ -1,6 +1,8 @@
 import type { CSSProperties, ReactNode } from "react";
 import { Inter } from "next/font/google";
 import { TopNav } from "@/components/layout/TopNav";
+import Link from "next/link";
+import { siteConfig } from "@/data/site";
 import { Footer } from "@/components/layout/Footer";
 
 const inter = Inter({
@@ -24,11 +26,35 @@ const themeStyle = {
  * The site-wide nav and footer wrap every page; only the case study body
  * uses its own editorial font + local color tokens.
  */
-export default function CaseStudyRouteLayout({
+export default async function CaseStudyRouteLayout({
   children,
+  params,
 }: {
   children: ReactNode;
+  params: Promise<{ slug: string }>;
 }) {
+  const { slug } = await params;
+  if (slug === "redfox-courier") {
+    return (
+      <div className="flex min-h-full flex-1 flex-col bg-white text-[#36383e]" style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}>
+        <header className="mx-auto flex w-[calc(100%-40px)] max-w-[700px] items-center justify-between gap-6 py-6 text-[11px]">
+          <Link href="/" className="font-medium">{siteConfig.name}</Link>
+          <nav aria-label="Primary" className="flex gap-5">
+            <Link href="/work">Work</Link>
+            <Link href="/about">About</Link>
+            <Link href="/contact">Contact</Link>
+          </nav>
+        </header>
+        <main className="flex-1">{children}</main>
+        <footer className="border-t border-[#eeeff0]">
+          <div className="mx-auto flex w-[calc(100%-40px)] max-w-[700px] flex-wrap justify-between gap-4 py-7 text-[10px] text-[#737780]">
+            <span>© {new Date().getFullYear()} {siteConfig.name}</span>
+            <Link href="/contact">Contact</Link>
+          </div>
+        </footer>
+      </div>
+    );
+  }
   return (
     <div className="flex min-h-full flex-1 flex-col bg-white">
       <TopNav />

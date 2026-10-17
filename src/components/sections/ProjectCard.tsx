@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Project } from "@/types/project";
 
-export function ProjectCard({ project }: { project: Project }) {
+export function ProjectCard({ project, banner }: { project: Project; banner?: { src: string; alt: string } }) {
   return (
     <Link
       href={`/work/${project.slug}`}
@@ -10,11 +10,11 @@ export function ProjectCard({ project }: { project: Project }) {
     >
       <div className="relative mx-auto aspect-[16/9] w-full overflow-hidden rounded-[1.5rem] bg-surface">
         <Image
-          src={project.coverImage.src}
-          alt={project.coverImage.alt}
+          src={banner?.src ?? project.coverImage.src}
+          alt={banner?.alt ?? project.coverImage.alt}
           fill
           sizes="(min-width: 1024px) 40vw, 100vw"
-          className="object-contain p-2 transition-transform duration-(--duration-slow) ease-(--ease-default) group-hover:scale-[1.02]"
+          className={`${banner ? "object-cover" : "object-contain p-2"} transition-transform duration-(--duration-slow) ease-(--ease-default) group-hover:scale-[1.02]`}
         />
       </div>
 

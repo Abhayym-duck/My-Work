@@ -6,6 +6,8 @@ import { projectSchema, breadcrumbSchema } from "@/lib/structured-data";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { CaseStudyLayout } from "@/components/sections/CaseStudyLayout";
 
+import { RedFoxCaseStudy } from "@/components/case-study/RedFoxCaseStudy";
+
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
@@ -55,7 +57,7 @@ export default async function ProjectPage({ params }: PageProps) {
           { name: project.title, path: `/work/${project.slug}` },
         ])}
       />
-      <CaseStudyLayout project={project} />
+      {slug === "redfox-courier" ? <RedFoxCaseStudy /> : <CaseStudyLayout project={project} />}
     </>
   );
 }

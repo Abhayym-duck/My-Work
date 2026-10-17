@@ -32,7 +32,7 @@ export const projects: Project[] = [
     seo: {
       title: "RedFox Courier — Case Study",
       description:
-        "Designing one connected international shipping experience: quotes, cost clarity, carrier comparison, tracking and operations.",
+        "Designing simpler international shipping: RedFox service selection, cost clarity, pickup requests and the CRM behind the operation.",
       keywords: ["product design case study", "logistics UX", "shipping"],
       ogImage: "/images/projects/redfox-courier/cover.svg",
     },

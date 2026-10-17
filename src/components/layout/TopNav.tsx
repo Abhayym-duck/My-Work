@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { House, Folder, CircleUserRound, FileText } from "lucide-react";
 import { siteConfig } from "@/data/site";
 
 const HOME_ICON = "/images/nav/home.svg";
@@ -12,7 +13,7 @@ export function TopNav() {
   const pathname = usePathname();
 
   return (
-    <div className="font-jb sticky top-6 z-(--z-header) flex justify-center px-4">
+    <div className="site-nav font-jb sticky top-6 z-(--z-header) flex justify-center px-4">
       <nav
         aria-label="Primary"
         className="flex items-center gap-8 rounded-(--radius-full) border border-[#f3f3f3] bg-[#fcfafa] px-5 py-3.5 shadow-[0px_4px_2px_rgba(0,0,0,0.04)]"
@@ -23,22 +24,25 @@ export function TopNav() {
               ? pathname === "/"
               : pathname === link.href || pathname.startsWith(`${link.href}/`);
           const external = link.href.endsWith(".pdf");
+          const MobileIcon = { Home: House, Projects: Folder, About: CircleUserRound, Resume: FileText }[link.label];
           return (
             <Link
               key={link.href}
               href={link.href}
               {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               aria-current={isActive ? "page" : undefined}
-              className="flex items-center gap-2 text-sm font-medium whitespace-nowrap"
+              className="site-nav-link flex items-center gap-2 text-sm font-medium whitespace-nowrap"
               style={{ color: isActive ? "var(--color-foreground)" : "var(--color-muted-foreground)" }}
             >
               <Image
+                className="desktop-nav-icon"
                 src={isActive ? HOME_ICON : GENERIC_ICON}
                 alt=""
                 width={20}
                 height={20}
                 aria-hidden
               />
+              <MobileIcon className="mobile-nav-icon" size={14} aria-hidden="true" />
               {link.label}
             </Link>
           );
