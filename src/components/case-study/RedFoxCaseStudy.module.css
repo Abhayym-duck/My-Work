@@ -1,3 +1,93 @@
-.page{width:min(100% - 48px,660px);margin:0 auto;color:#36383e;font-family:var(--font-dm-sans),sans-serif;font-size:14px;line-height:1.7;padding:64px 0 0}
-.page p{margin:0 0 16px}.page h1,.page h2,.page h3{font-weight:500;letter-spacing:-.02em;text-wrap:balance}.page h1{font-size:34px;line-height:1.2;margin:0 0 22px}.page h2{font-size:23px;line-height:1.35;margin:0;max-width:620px}.page h3{font-size:12px;line-height:1.5;margin:0 0 5px;letter-spacing:0;font-weight:600}.page .eyebrow{font-size:10px;line-height:1.5;letter-spacing:.08em;text-transform:uppercase;color:#737780;margin-bottom:9px}.intro>p:not(.eyebrow){max-width:590px}.metadata{font-size:11px;color:#737780;line-height:1.8;margin-top:25px}.evidence{aspect-ratio:16/10;width:100%;margin:54px 0 38px;display:flex;align-items:center;justify-content:center;padding:28px;background:#fdfdfd;border:1px solid #eeeff0}.evidence figcaption{font-size:11px;line-height:1.7;color:#7c8087;text-align:center;max-width:340px}.intro+.evidence{margin-top:72px;margin-bottom:0}.compact{width:82%;margin-left:auto;margin-right:auto;aspect-ratio:4/3}.chapter{margin-top:112px;scroll-margin-top:32px}.chapter>header{margin-bottom:34px}.chapter .evidence{margin-top:0;margin-bottom:36px}.note{margin:19px 0}.note p{margin-bottom:0}.caption{font-size:11px;line-height:1.65;color:#737780}.services{margin:24px 0 12px;font-size:12px}.services>div{margin:0 0 14px}.services dt{font-weight:500}.services dd{margin:2px 0 0;color:#666a72;font-size:11px}.diagram{margin:42px 0 38px;padding:12px 0}.journey{margin-bottom:28px}.journey h3{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:#767b84;font-weight:400;margin-bottom:14px}.journey ol{display:flex;flex-wrap:wrap;gap:8px 0;list-style:none;margin:0;padding:0;font-size:11px;line-height:1.8}.journey li:not(:last-child)::after{content:'→';display:inline-block;margin:0 10px;color:#a2a6ad}.journey:last-of-type{margin-bottom:0}.diagram .caption{margin-top:24px;margin-bottom:0}.record{margin:26px 0 14px;font-size:12px}.record>div{margin-bottom:14px}.record dt{font-size:10px;color:#737780;text-transform:uppercase;letter-spacing:.05em}.record dd{margin:3px 0 0}.list{list-style:none;padding:0;margin:12px 0 20px}.list li{margin:3px 0}.scan{font-weight:500;word-spacing:8px;margin:22px 0!important}.end{border-top:1px solid #eeeff0;margin-top:80px;padding:25px 0 40px;display:flex;justify-content:space-between;font-size:11px;color:#737780}.page a:hover{color:#36383e;text-decoration:underline}.page a:focus-visible{outline:2px solid #737780;outline-offset:5px}
-@media(max-width:600px){.page{width:calc(100% - 40px);padding-top:44px;font-size:14px}.page h1{font-size:30px}.page h2{font-size:21px}.chapter{margin-top:84px}.chapter>header{margin-bottom:28px}.intro+.evidence{margin-top:52px}.evidence{padding:18px;min-height:190px}.compact{width:90%;min-height:210px}.evidence figcaption{font-size:10px}.journey ol{font-size:10px}.journey li:not(:last-child)::after{margin:0 7px}.scan{word-spacing:3px}.end{margin-top:60px}}
+.page {
+  width: min(100% - 48px, 560px);
+  margin: 0 auto;
+  padding: 88px 0 0;
+  color: #353b48;
+  font-family: var(--font-dm-sans), Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.page p { margin: 0 0 12px; }
+.page h1, .page h2, .page h3 {
+  color: #303747;
+  font-weight: 600;
+  letter-spacing: -.025em;
+  text-wrap: pretty;
+}
+.page h1 { font-size: 28px; line-height: 1.25; margin: 0 0 14px; }
+.page h2 { font-size: 21px; line-height: 1.3; margin: 0; }
+.page h3 { font-size: 15px; line-height: 1.4; margin: 0 0 5px; }
+.page strong { font-weight: 600; }
+.page .eyebrow {
+  color: #687180;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: .04em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  margin: 0 0 8px;
+}
+.metadata { color: #687180; font-size: 12px; line-height: 1.6; margin-top: 16px; }
+.chapter {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid #f1f2f4;
+  scroll-margin-top: 32px;
+}
+.chapter > header { margin-bottom: 12px; }
+.chapter .eyebrow {
+  display: inline-block;
+  padding: 3px 7px;
+  border: 1px solid #eff0f2;
+  border-radius: 4px;
+  font-size: 11px;
+  text-transform: none;
+  letter-spacing: 0;
+  margin-bottom: 10px;
+}
+.evidence {
+  width: 100%;
+  aspect-ratio: 1.6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 28px 0 32px;
+  padding: 24px;
+  background: #fff;
+  border: 1px solid #f3f3f5;
+  border-radius: 12px;
+}
+.evidence figcaption { max-width: 280px; color: #737b87; font-size: 12px; text-align: center; }
+.intro + .evidence { margin: 24px 0 64px; }
+.chapter .evidence { order: 2; }
+.compact { width: 74%; aspect-ratio: 1; margin-left: auto; margin-right: auto; border: 0; }
+.note { margin: 16px 0; }
+.note p { margin: 0; }
+.caption { color: #687180; font-size: 12px; line-height: 1.5; }
+.services { margin: 20px 0 12px; font-size: 14px; }
+.services > div { margin-bottom: 12px; }
+.services dt { font-weight: 600; }
+.services dd { margin: 3px 0 0; color: #727985; font-size: 11px; }
+.page .decision { font-size: 19px; line-height: 1.35; margin: 20px 0 12px; }
+.decisionGroup { border-top: 1px solid #f1f2f4; margin-top: 40px; padding-top: 20px; scroll-margin-top: 32px; }
+.record { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 20px 0 12px; padding: 16px 0; border-block: 1px solid #f1f2f4; }
+.record dt { color: #687180; font-size: 12px; }
+.record dd { margin: 5px 0 0; font-size: 14px; }
+.list { list-style: none; padding: 0; margin: 12px 0 16px; }
+.list li { margin: 3px 0; }
+.scan { font-size: 15px; font-weight: 500; margin: 18px 0 !important; }
+.end { border-top: 1px solid #f1f2f4; margin-top: 48px; padding: 24px 0 40px; display: flex; justify-content: space-between; font-size: 12px; color: #687180; }
+.page a:hover { color: #303747; text-decoration: underline; }
+.page a:focus-visible { outline: 2px solid #687180; outline-offset: 5px; }
+@media (max-width: 600px) {
+  .page { width: calc(100% - 40px); padding-top: 64px; }
+  .page h1 { font-size: 26px; }
+  .chapter { margin-top: 36px; padding-top: 28px; }
+  .evidence { padding: 16px; }
+  .compact { width: 82%; }
+  .record { grid-template-columns: 1fr; gap: 12px; }
+}
+
+.productImage { width: 100%; margin: 24px 0 64px; }
+.productImage img { display: block; width: 100%; height: auto; }

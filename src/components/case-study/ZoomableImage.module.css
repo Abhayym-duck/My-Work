@@ -1,0 +1,13 @@
+.trigger { display:block; width:100%; padding:0; border:0; background:transparent; cursor:zoom-in; }
+.trigger img { display:block; width:100%; height:auto; }
+.trigger:focus-visible { outline:2px solid #687180; outline-offset:5px; }
+.dialog { position:fixed; inset:0; margin:0; padding:0; border:0; width:100vw; max-width:none; height:100dvh; max-height:none; background:rgba(12,15,20,.88); color:white; overflow:hidden; }
+.dialog::backdrop { background:rgba(12,15,20,.88); }
+.toolbar { position:absolute; top:16px; left:50%; transform:translateX(-50%); z-index:2; display:flex; align-items:center; gap:6px; padding:6px; border:1px solid #ffffff25; border-radius:12px; background:#202329; }
+.toolbar button { min-width:44px; height:40px; padding:0 12px; border:0; border-radius:6px; color:white; background:transparent; font:500 15px Arial,sans-serif; cursor:pointer; }
+.toolbar button:hover { background:#ffffff20; }
+.toolbar button:disabled { opacity:.35; cursor:default; }
+.toolbar button:focus-visible { outline:2px solid white; outline-offset:1px; }
+.viewport { position:absolute; inset:76px 0 0; overflow:auto; padding:20px; display:flex; touch-action:pan-x pan-y; }
+.image { flex-shrink:0; margin:auto; }
+.image img { width:100%; height:auto; display:block; user-select:none; }

@@ -37,14 +37,7 @@ export default async function CaseStudyRouteLayout({
   if (slug === "redfox-courier") {
     return (
       <div className="flex min-h-full flex-1 flex-col bg-white text-[#36383e]" style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}>
-        <header className="mx-auto flex w-[calc(100%-40px)] max-w-[700px] items-center justify-between gap-6 py-6 text-[11px]">
-          <Link href="/" className="font-medium">{siteConfig.name}</Link>
-          <nav aria-label="Primary" className="flex gap-5">
-            <Link href="/work">Work</Link>
-            <Link href="/about">About</Link>
-            <Link href="/contact">Contact</Link>
-          </nav>
-        </header>
+        <TopNav />
         <main className="flex-1">{children}</main>
         <footer className="border-t border-[#eeeff0]">
           <div className="mx-auto flex w-[calc(100%-40px)] max-w-[700px] flex-wrap justify-between gap-4 py-7 text-[10px] text-[#737780]">

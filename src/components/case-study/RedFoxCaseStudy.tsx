@@ -1,10 +1,11 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
+import { ZoomableImage } from "./ZoomableImage";
 import s from "./RedFoxCaseStudy.module.css";
 
 // Each image slot reserves the screenshot's aspect ratio for later replacement.
 function Evidence({ label, compact = false }: { label: string; compact?: boolean }) {
-  return <figure className={`${s.evidence} ${compact ? s.compact : ""}`}><figcaption>[IMAGE — {label}]</figcaption></figure>;
+  return <figure className={`${s.evidence} ${compact ? s.compact : ""}`}><figcaption>{label}</figcaption></figure>;
 }
 function Chapter({ id, label, title, children }: { id: string; label: string; title: string; children: ReactNode }) {
   return <section id={id} className={s.chapter}><header><p className={s.eyebrow}>{label}</p><h2>{title}</h2></header>{children}</section>;
@@ -12,135 +13,110 @@ function Chapter({ id, label, title, children }: { id: string; label: string; ti
 function Note({ label, children }: { label: string; children: ReactNode }) {
   return <div className={s.note}><h3>{label}</h3>{children}</div>;
 }
-function Journey({ label, steps }: { label: string; steps: string[] }) {
-  return <div className={s.journey}><h3>{label}</h3><ol>{steps.map(step => <li key={step}>{step}</li>)}</ol></div>;
-}
 
 export function RedFoxCaseStudy() {
   return <article className={s.page}>
     <header className={s.intro} id="top">
       <p className={s.eyebrow}>RedFox Courier</p>
-      <h1>You ship.<br />We handle the rest.</h1>
-      <p>RedFox is an international shipping platform designed to simplify the experience of shipping across borders — while taking care of the operational complexity behind the scenes.</p>
+      <h1>Making a complex shipping workflow easier to navigate.</h1>
+      <p>RedFox is an international shipping platform. We worked as a team on the customer booking flow and internal CRM. Our challenge was to decide what information each person needed, when they needed it, and how the interface should help them act on it.</p>
       <div className={s.metadata}>Product Design<br />Customer Experience · CRM · Order Management</div>
     </header>
-    <Evidence label="RedFox service selection" />
+    <figure className={s.productImage}>
+      <ZoomableImage
+        src="/images/projects/redfox-courier/ux-showcase.png"
+        alt="Annotated RedFox homepage showing shipping quote search, tracking access, navigation and the main shipping message."
+        width={1576}
+        height={998}
+        sizes="(max-width: 600px) calc(100vw - 40px), 560px"
+        preload
+      />
+    </figure>
 
-    <Chapter id="problem" label="The problem" title="International shipping is complicated. Choosing how to ship shouldn’t be.">
-      <div className={s.diagram} aria-label="Shipment lifecycle">
-        <Journey label="Customer journey" steps={["Shipment details", "Service", "Verification", "Details", "Payment", "Pickup"]} />
-        <Journey label="RedFox handles" steps={["Verification", "Documentation", "Customs", "Shipment handling", "Tracking", "Delivery"]} />
-      </div>
-      <p>Behind a single international shipment are multiple moving parts — pricing, service types, verification, documentation, customs, tracking and delivery.</p>
-      <p>Most of that complexity is necessary. But it doesn’t necessarily need to belong to the customer.</p>
-      <Note label="The idea"><p>You provide the shipment details. You request a pickup. RedFox takes care of the complexity behind the scenes.</p></Note>
+    <Chapter id="problem" label="The challenge" title="Two different tasks to design for.">
+      <p>Customers needed to compare shipping options and complete a booking. Operations needed to manage leads, documents, shipment status and exceptions across many records. A simplified form alone would only address one side of the problem.</p>
+      <p>We focused our work on <strong>the booking sequence, information hierarchy and the handoff to operations</strong>. The same shipment needed a focused customer view and a more detailed operational view.</p>
+      <p className={s.caption}>Customer verification steps collect the required information; RedFox’s operational verification continues behind the scenes.</p>
     </Chapter>
 
-    <Chapter id="approach" label="Our approach" title="Move the complexity backstage.">
-      <div className={s.diagram}>
-        <Journey label="Common shipping experience" steps={["Enter details", "Understand services", "Manage shipment", "Arrange pickup", "Track"]} />
-        <Journey label="RedFox customer" steps={["Provide shipment details", "Choose RedFox service", "Request pickup"]} />
-        <Journey label="RedFox" steps={["Handles the rest"]} />
-        <p className={s.caption}>An illustrative comparison of common shipping patterns, not a claim about every platform.</p>
-      </div>
-      <p>The goal wasn’t to remove the complexity of international shipping. It was to make sure the customer didn’t have to manage all of it.</p>
+    <Chapter id="approach" label="Our approach" title="Deciding what to show, and when.">
+      <p><strong>We used the task on each screen to decide which information deserved priority.</strong></p>
+      <p>For customers, we prioritised service comparison, price and required details. For operations, we prioritised status, blockers and next actions. This meant keeping more detail in the CRM rather than trying to make both interfaces equally minimal.</p>
     </Chapter>
 
-    <Chapter id="responsibility" label="Hypothesis 01" title="Reduce the customer’s responsibility.">
-      <Evidence label="Customer-to-RedFox responsibility handoff" compact />
-      <p>If RedFox takes ownership of the operational steps after a pickup request, customers can ship internationally without having to manage the logistics themselves.</p>
-      <Note label="Why we believed this"><p>International shipping contains many operational steps that are invisible to the customer but necessary for delivery. The experience should expose only the decisions and information the customer actually needs.</p></Note>
-    </Chapter>
-
-    <Chapter id="services" label="Service selection" title="Help people choose. Don’t make them learn logistics.">
-      <Evidence label="RedFox service selection screen" />
-      <p>RedFox doesn’t ask customers to choose between individual courier companies. Customers choose from RedFox’s own shipping services, each designed around a different combination of speed, shipping mode and shipment requirements.</p>
-      <dl className={s.services}>{[["RedFox Priority", "Express air · Door to door · 1–2 business days"], ["RedFox Express Saver", "Air · Door to door · 3–5 business days"], ["RedFox Air Cargo", "Consolidated air · Door to door · 5–8 business days"], ["RedFox Economy LCL", "Ocean groupage · Port to door · 22–30 days"]].map(([name, detail]) => <div key={name}><dt>{name}</dt><dd>{detail}</dd></div>)}</dl>
-      <p className={s.caption}>Service examples and indicative delivery estimates.</p>
-      <Note label="Why it works"><p>The most decision-relevant information is visible directly on the service card. Customers only need to understand what each option means for them, rather than the logistics network behind it.</p></Note>
-    </Chapter>
-
-    <Chapter id="differences" label="Hypothesis 02" title="Make the difference visible.">
-      <Evidence label="Cropped service cards · price, speed, service type and eligibility" compact />
-      <Note label="Why we did it"><p>Customers need to understand price, speed, service type and eligibility.</p></Note>
-      <Note label="Then what?"><p>We surfaced those attributes directly inside the selection experience rather than hiding them behind additional steps.</p></Note>
-      <Note label="Design decision"><p>The interface supports the decision without making the decision for the customer.</p></Note>
-    </Chapter>
-
-    <Chapter id="costs" label="Cost transparency" title="The price is only useful when you understand it.">
-      <Evidence label="Order summary and bill breakdown" />
-      <p>A shipment price is rarely just one number. The final amount can include freight, GST, booking fees, duties and destination taxes.</p>
-      <p>Instead of hiding that complexity, we separate what is already known from what may be determined later.</p>
+    <Chapter id="services" label="Designing the customer experience" title="The decisions behind the booking flow.">
+      <h3 className={s.decision}>We made service differences comparable</h3>
+      <p>We organised RedFox’s services into cards with a consistent hierarchy. Each option needed to answer the same questions: what does it cost, when will it arrive, and is this shipment eligible?</p>
+      <p>We kept <strong>price and delivery estimates close to the service name</strong>, with mode, coverage and eligibility alongside them. The trade-off was showing enough detail to support a choice without making customers open each option to compare it.</p>
+      <figure className={s.productImage}>
+        <ZoomableImage
+          src="/images/projects/redfox-courier/1.png"
+          alt="RedFox shipping service selection with Priority and Express Saver options, delivery estimates, eligibility requirements and an order cost summary."
+          width={3808}
+          height={1746}
+          sizes="(max-width: 600px) calc(100vw - 40px), 560px"
+        />
+      </figure>
+      <div id="costs" className={s.decisionGroup}>
+      <h3 className={s.decision}>We made pricing uncertainty explicit</h3>
+      <p>We separated confirmed charges from costs determined later. A single total would be easier to scan, but would not explain the limits of the quote. We chose to keep that distinction visible in the summary.</p>
       <Note label="Known"><p>Freight · GST · AWB · Booking fee</p></Note>
       <Note label="Determined later"><p>Import duty · Destination tax</p></Note>
-      <p>The goal isn’t to promise a final number when one isn’t available. It’s to make the current cost understandable.</p>
-    </Chapter>
-
-    <Chapter id="progressive" label="Hypothesis 03" title="Introduce complexity only when it becomes relevant.">
-      <Evidence label="Progress navigation · Shipment → Verify → Details → Payment" compact />
-      <p>International shipping requires information that isn’t relevant at every stage. RedFox progressively introduces it instead of asking customers to understand the entire process upfront.</p>
-      <Note label="Why we did it"><p>Progressive disclosure keeps the primary task visible.</p></Note>
-      <Note label="Then what?"><p>Each step introduces only the information needed to move forward.</p></Note>
-    </Chapter>
-
-    <Chapter id="customer" label="The customer journey" title="The customer’s job ends at the pickup request.">
-      <Evidence label="Full customer flow · shipment details to pickup request" />
-      <p>Provide the shipment information. Choose the appropriate RedFox service. Complete the required details. Request a pickup.</p>
-      <p>After that, RedFox takes over the operational work required to move the shipment forward.</p>
-      <div className={s.diagram}>
-        <Journey label="Customer" steps={["Shipment", "Service", "Pickup request"]} />
-        <Journey label="RedFox" steps={["Verification", "Documentation", "Customs", "Shipment", "Tracking", "Delivery"]} />
+      <figure className={s.productImage}>
+        <ZoomableImage
+          src="/images/projects/redfox-courier/2.png"
+          alt="RedFox shipment details showing weight-based rates, duty and tax payment choices, package dimensions and the order bill breakdown."
+          width={3808}
+          height={1846}
+          sizes="(max-width: 600px) calc(100vw - 40px), 560px"
+        />
+      </figure>
+      </div>
+      <div id="progressive" className={s.decisionGroup}>
+      <h3 className={s.decision}>We broke information collection into stages</h3>
+      <p>We split the requirements across four stages so each screen had a clear task. This kept the initial booking step focused without dropping information the operation required.</p>
+      <p><strong>Shipment → Verify → Details → Payment</strong></p>
+      <p>We kept the full sequence visible in the progress navigation. Our aim was to make the current task manageable while showing what remained.</p>
       </div>
     </Chapter>
 
-    <Chapter id="operations" label="Operational experience" title="We didn’t remove the complexity. We moved it to where it belongs.">
-      <Evidence label="RedFox CRM" />
-      <p>A simple customer experience doesn’t mean the underlying operation is simple.</p>
-      <p>RedFox’s internal teams need visibility into leads, orders, verification, shipments, documents, exceptions and delivery. The CRM is where that complexity lives.</p>
+    <Chapter id="customer" label="Connecting the workflows" title="We designed around the pickup handoff.">
+      <p>We made the pickup request the end of the booking task. RedFox then handles operational verification, documentation, customs and delivery. This boundary helped us decide what to collect from customers and what belonged in the internal workflow.</p>
+      <Evidence label="Full customer flow · shipment details to pickup request" />
     </Chapter>
 
-    <Chapter id="crm" label="CRM" title="Customers see one shipment. Operations see hundreds.">
-      <Evidence label="Manifest / Order Management" />
-      <p>For operations teams, simplicity means being able to:</p>
-      <p className={s.scan}>Search. Filter. Scan. Identify. Act.</p>
-      <p>The interface prioritises structured tables, status, filters, search, bulk actions and contextual information.</p>
+    <Chapter id="operations" label="Designing the CRM" title="We prioritised scanning and action over a minimal screen.">
+      <p>In the CRM, hiding detail could make the work harder. We structured lead, order and shipment views around finding a record, assessing its state and deciding what to do next.</p>
+      <p className={s.scan}>Search → Filter → Scan → Identify → Act</p>
+      <p>We chose tables to keep records comparable, search and filters to narrow the list, and status to support scanning. Bulk actions supported work across records. Our focus was on organising density so the team could find what needed attention.</p>
+      <Evidence label="RedFox CRM · Manifest / Order Management" />
     </Chapter>
 
-    <Chapter id="clarity" label="Operational clarity" title="A CRM should tell you what needs to happen next.">
-      <Evidence label="Lead Queue" />
-      <p>Instead of treating operational records as static information, we structured key workflows around three questions: What happened? What’s blocking it? What needs to happen next?</p>
+    <Chapter id="clarity" label="A closer look at hierarchy" title="We connected shipment context to the next task.">
+      <p>We grouped shipment context, booking status and next action in the lead view. In the example below, the route and weight explain the shipment, the status explains the blocker, and “Follow up” identifies the task. This was the relationship we wanted the hierarchy to make clear.</p>
       <dl className={s.record}><div><dt>Customer</dt><dd>Mumbai → London · 8 kg</dd></div><div><dt>Status</dt><dd>Booking incomplete</dd></div><div><dt>Next action</dt><dd>Follow up</dd></div></dl>
       <p className={s.caption}>Illustrative workflow example.</p>
+      <Evidence label="Lead Queue" />
     </Chapter>
 
-    <Chapter id="validation" label="Validation" title="What we could validate — and what we couldn’t.">
-      <Evidence label="Annotated design / validation example" compact />
-      <p>RedFox wasn’t fully live, so we didn’t have access to real conversion, completion or operational performance data. We didn’t want to manufacture success metrics.</p>
-      <p>Pre-launch review focused on the reasoning behind the experience:</p>
+    <Chapter id="validation" label="Validation" title="How we reviewed our design decisions.">
+      <p>RedFox was not fully live, so we could not assess the design using production booking or operational performance data.</p>
+      <p>We evaluated the proposed flow and hierarchy through:</p>
       <ul className={s.list}><li>Competitive pattern analysis</li><li>Heuristic evaluation</li><li>Scenario-based walkthroughs</li><li>Information hierarchy review</li></ul>
-      <p className={s.caption}>These methods assess design reasoning, not production impact.</p>
+      <p>We examined whether the service comparison supported a choice, the pricing communicated uncertainty, and the CRM made the next task clear. These reviews assessed design reasoning and proposed usability; they did not prove improvements in real use.</p>
+      <Note label="Future validation"><p>We would track booking completion, abandonment, time to request pickup and pricing questions, alongside shipment processing time, documentation errors, exception resolution and lead follow-up time. These are planned measures, not results.</p></Note>
     </Chapter>
 
-    <Chapter id="next" label="Next validation" title="The real test begins with real shipments.">
-      <Evidence label="Hypothesis → metric framework" compact />
-      <p>Once RedFox is live, the hypotheses can be tested against real behaviour.</p>
-      <Note label="Customer"><ul className={s.list}><li>Time to select a service</li><li>Time to request a pickup</li><li>Booking completion</li><li>Abandonment</li><li>Pricing-related questions</li></ul></Note>
-      <Note label="Operations"><ul className={s.list}><li>Shipment processing time</li><li>Manual interventions</li><li>Documentation errors</li><li>Exception resolution</li><li>Lead follow-up time</li></ul></Note>
-      <p className={s.caption}>These are future validation metrics, not current results.</p>
-    </Chapter>
-
-    <Chapter id="outcome" label="Outcome" title="A simpler customer experience, without simplifying the operation.">
+    <Chapter id="outcome" label="Outcome" title="What our work brought together.">
+      <p>Our design connected a staged booking flow with CRM views for lead, order and shipment management. The key design work was deciding which information belonged in each experience and how to make it actionable.</p>
+      <Note label="Customers"><p>Comparable services, an explained price and a staged path to requesting pickup.</p></Note>
+      <Note label="Operations"><p>Structured tools for finding records, understanding status and acting on outstanding work.</p></Note>
+      <Note label="Product"><p>A clear handoff between customer input and logistics operations.</p></Note>
       <Evidence label="Final RedFox product collage · customer experience, CRM and order management" />
-      <p>RedFox brings two very different experiences together.</p>
-      <Note label="For customers"><p>Tell us what you’re shipping. Request a pickup. We’ll handle the rest.</p></Note>
-      <Note label="For operations"><p>A structured system for managing everything that happens after.</p></Note>
-      <p>The design challenge wasn’t to eliminate the complexity of international shipping. It was to make sure the right people deal with it.</p>
     </Chapter>
 
-    <Chapter id="reflection" label="Reflection" title="Simplicity depends on who’s using the product.">
-      <p>For a customer, simplicity means: “Tell me what I need to know.”</p>
-      <p>For an operations team, simplicity means: “Show me what needs my attention.”</p>
-      <p>RedFox needed both.</p>
+    <Chapter id="reflection" label="Reflection" title="What we took from designing both sides.">
+      <p>Working on both interfaces made us more deliberate about information density. We needed to reduce customer decisions while preserving the detail operations uses to make its own.</p>
     </Chapter>
     <div className={s.end}><Link href="/work">← All work</Link><a href="#top">Back to top ↑</a></div>
   </article>;
