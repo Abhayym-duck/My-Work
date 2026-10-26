@@ -91,3 +91,27 @@
 
 .productImage { width: 100%; margin: 24px 0 64px; }
 .productImage img { display: block; width: 100%; height: auto; }
+
+.page .liveProject {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 44px;
+  margin-top: 22px;
+  padding: 10px 18px;
+  border: 1px solid #303747;
+  border-radius: 999px;
+  background: #303747;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 180ms ease, box-shadow 180ms ease;
+}
+.page .liveProject:hover {
+  background: #454e61;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgb(48 55 71 / 14%);
+}

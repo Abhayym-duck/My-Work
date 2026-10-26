@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { ZoomableImage } from "./ZoomableImage";
 import s from "./RedFoxCaseStudy.module.css";
 
@@ -21,6 +22,9 @@ export function RedFoxCaseStudy() {
       <h1>Making a complex shipping workflow easier to navigate.</h1>
       <p>RedFox is an international shipping platform. We worked as a team on the customer booking flow and internal CRM. Our challenge was to decide what information each person needed, when they needed it, and how the interface should help them act on it.</p>
       <div className={s.metadata}>Product Design<br />Customer Experience · CRM · Order Management</div>
+      <a className={s.liveProject} href="https://redfoxcourier.com/" target="_blank" rel="noopener noreferrer" aria-label="View live RedFox Courier project (opens in a new tab)">
+        View live project <ArrowUpRight size={16} aria-hidden="true" />
+      </a>
     </header>
     <figure className={s.productImage}>
       <ZoomableImage
