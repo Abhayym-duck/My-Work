@@ -30,7 +30,7 @@ export const resume = {
     { label: "abhay.uiux@gmail.com", href: "mailto:abhay.uiux@gmail.com" },
     {
       label: "linkedin.com/in/abhay-maske-866a93200",
-      href: "https://linkedin.com/in/abhay-maske-866a93200",
+      href: "https://www.linkedin.com/in/abhay-maske-866a93200/",
     },
   ],
   summary:

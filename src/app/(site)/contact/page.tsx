@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Mail } from "lucide-react";
+import { Mail, ArrowUpRight } from "lucide-react";
 import { buildMetadata } from "@/lib/seo";
 import { siteConfig } from "@/data/site";
 import { Section } from "@/components/ui/Section";
@@ -33,6 +33,10 @@ export default function ContactPage() {
           >
             <Mail size={18} aria-hidden />
             {siteConfig.email}
+          </a>
+          <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-base text-foreground hover:underline">
+            <ArrowUpRight size={18} aria-hidden />
+            Connect on LinkedIn
           </a>
         </div>
       </Reveal>

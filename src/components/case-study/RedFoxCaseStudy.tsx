@@ -3,10 +3,6 @@ import Link from "next/link";
 import { ZoomableImage } from "./ZoomableImage";
 import s from "./RedFoxCaseStudy.module.css";
 
-// Each image slot reserves the screenshot's aspect ratio for later replacement.
-function Evidence({ label, compact = false }: { label: string; compact?: boolean }) {
-  return <figure className={`${s.evidence} ${compact ? s.compact : ""}`}><figcaption>{label}</figcaption></figure>;
-}
 function Chapter({ id, label, title, children }: { id: string; label: string; title: string; children: ReactNode }) {
   return <section id={id} className={s.chapter}><header><p className={s.eyebrow}>{label}</p><h2>{title}</h2></header>{children}</section>;
 }
@@ -81,22 +77,46 @@ export function RedFoxCaseStudy() {
     </Chapter>
 
     <Chapter id="customer" label="Connecting the workflows" title="We designed around the pickup handoff.">
+      <figure className={s.productImage}>
+        <ZoomableImage
+          src="/images/projects/redfox-courier/3.png"
+          alt="RedFox customer booking workflow and pickup handoff."
+          width={2880}
+          height={2676}
+          sizes="(max-width: 600px) calc(100vw - 40px), 560px"
+        />
+      </figure>
       <p>We made the pickup request the end of the booking task. RedFox then handles operational verification, documentation, customs and delivery. This boundary helped us decide what to collect from customers and what belonged in the internal workflow.</p>
-      <Evidence label="Full customer flow · shipment details to pickup request" />
     </Chapter>
 
     <Chapter id="operations" label="Designing the CRM" title="We prioritised scanning and action over a minimal screen.">
       <p>In the CRM, hiding detail could make the work harder. We structured lead, order and shipment views around finding a record, assessing its state and deciding what to do next.</p>
       <p className={s.scan}>Search → Filter → Scan → Identify → Act</p>
       <p>We chose tables to keep records comparable, search and filters to narrow the list, and status to support scanning. Bulk actions supported work across records. Our focus was on organising density so the team could find what needed attention.</p>
-      <Evidence label="RedFox CRM · Manifest / Order Management" />
+      <figure className={s.productImage}>
+        <ZoomableImage
+          src="/images/projects/redfox-courier/4.png"
+          alt="RedFox CRM interface for scanning and managing shipment records."
+          width={1440}
+          height={806}
+          sizes="(max-width: 600px) calc(100vw - 40px), 560px"
+        />
+      </figure>
     </Chapter>
 
     <Chapter id="clarity" label="A closer look at hierarchy" title="We connected shipment context to the next task.">
       <p>We grouped shipment context, booking status and next action in the lead view. In the example below, the route and weight explain the shipment, the status explains the blocker, and “Follow up” identifies the task. This was the relationship we wanted the hierarchy to make clear.</p>
       <dl className={s.record}><div><dt>Customer</dt><dd>Mumbai → London · 8 kg</dd></div><div><dt>Status</dt><dd>Booking incomplete</dd></div><div><dt>Next action</dt><dd>Follow up</dd></div></dl>
       <p className={s.caption}>Illustrative workflow example.</p>
-      <Evidence label="Lead Queue" />
+      <figure className={s.productImage}>
+        <ZoomableImage
+          src="/images/projects/redfox-courier/5.png"
+          alt="RedFox lead queue connecting shipment context, booking status and next actions."
+          width={1440}
+          height={806}
+          sizes="(max-width: 600px) calc(100vw - 40px), 560px"
+        />
+      </figure>
     </Chapter>
 
     <Chapter id="validation" label="Validation" title="How we reviewed our design decisions.">
@@ -112,11 +132,10 @@ export function RedFoxCaseStudy() {
       <Note label="Customers"><p>Comparable services, an explained price and a staged path to requesting pickup.</p></Note>
       <Note label="Operations"><p>Structured tools for finding records, understanding status and acting on outstanding work.</p></Note>
       <Note label="Product"><p>A clear handoff between customer input and logistics operations.</p></Note>
-      <Evidence label="Final RedFox product collage · customer experience, CRM and order management" />
     </Chapter>
 
-    <Chapter id="reflection" label="Reflection" title="What we took from designing both sides.">
-      <p>Working on both interfaces made us more deliberate about information density. We needed to reduce customer decisions while preserving the detail operations uses to make its own.</p>
+    <Chapter id="reflection" label="Reflection" title="What I took from designing both sides.">
+      <p>Working on both interfaces made me more deliberate about information density. I learned to reduce the decisions customers need to make while preserving the detail the operations team needs to make theirs.</p>
     </Chapter>
     <div className={s.end}><Link href="/work">← All work</Link><a href="#top">Back to top ↑</a></div>
   </article>;

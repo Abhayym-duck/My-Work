@@ -11,16 +11,16 @@ export const siteConfig = {
     "Portfolio of Abhay Maske, a UX designer crafting thoughtful, user-centered digital experiences.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com",
   locale: "en_US",
-  email: "hello@example.com",
-  avatar: null as string | null,
+  email: "abhay.uiux@gmail.com",
+  avatar: "/images/hero/potrait.jpg",
   hero: {
-    lines: ["Hey, I'm Abhay.", "I design products & sleep."],
+    lines: ["Hey, I'm Abhay Maske"],
     subtext:
-      "I have around 3 years of experience designing digital products, and around 23 years of experience sleeping",
+      "With 3+ years in product design, I've learned to put my overthinking to good use by spotting confusion and creating experiences that are easier for everyone to use.",
   },
   social: {
     twitter: "https://x.com/example",
-    linkedin: "https://linkedin.com/in/example",
+    linkedin: "https://www.linkedin.com/in/abhay-maske-866a93200/",
     instagram: "https://instagram.com/example",
     dribbble: "https://dribbble.com/example",
     behance: "https://behance.net/example",

@@ -81,6 +81,7 @@ export interface Project {
   process: string[];
   outcomes: string[];
   metrics: ProjectMetric[];
+  reflection?: { title: string; paragraphs: string[] };
   seo: ProjectSeo;
   /** Long-form narrative case study (takes precedence over `patterns`) */
   story?: ProjectStory;

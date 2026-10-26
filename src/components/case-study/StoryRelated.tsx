@@ -5,10 +5,10 @@ import { ImagePlaceholder } from "./ImagePlaceholder";
 
 export function StoryRelated({ items }: { items: ProjectStory["related"] }) {
   return (
-    <section className="border-t border-[var(--cs-border)] bg-[#fafafa]">
-      <div className="mx-auto max-w-5xl px-6 py-16">
+    <section className="border-t border-[var(--cs-border)] bg-[#f6f7fa]">
+      <div className="mx-auto max-w-6xl px-6 py-12">
         <h2 className="text-lg font-semibold text-[var(--cs-fg)]">
-          Similar breakdowns
+          Similar Breakdown Lessons
         </h2>
 
         <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -37,11 +37,11 @@ export function StoryRelated({ items }: { items: ProjectStory["related"] }) {
               </>
             );
             return item.slug ? (
-              <Link key={item.title} href={`/work/${item.slug}`}>
+              <Link key={item.title} href={`/work/${item.slug}`} className="rounded-3xl border border-[var(--cs-border)] bg-white p-5 transition-shadow hover:shadow-md">
                 {card}
               </Link>
             ) : (
-              <div key={item.title}>{card}</div>
+              <div key={item.title} className="rounded-3xl border border-[var(--cs-border)] bg-white p-5">{card}</div>
             );
           })}
         </div>

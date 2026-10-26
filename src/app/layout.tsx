@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans, JetBrains_Mono } from "next/font/google";
+import { DM_Sans, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/data/site";
 import { buildMetadata } from "@/lib/seo";
@@ -17,6 +17,13 @@ const dmSans = DM_Sans({
   subsets: ["latin"],
 });
 
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
+  subsets: ["latin"],
+  weight: "500",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   ...buildMetadata({
@@ -30,7 +37,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${jetBrainsMono.variable} ${dmSans.variable} h-full antialiased`}
+      className={`${jetBrainsMono.variable} ${dmSans.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
         <JsonLd data={personSchema()} />

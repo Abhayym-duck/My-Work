@@ -5,8 +5,11 @@ import { getAllProjects, getProjectBySlug } from "@/data/projects";
 import { projectSchema, breadcrumbSchema } from "@/lib/structured-data";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { CaseStudyLayout } from "@/components/sections/CaseStudyLayout";
+import { AtlanticOceanCaseStudy } from "@/components/case-study/AtlanticOceanCaseStudy";
 
 import { RedFoxCaseStudy } from "@/components/case-study/RedFoxCaseStudy";
+import { GrowveCaseStudy } from "@/components/case-study/GrowveCaseStudy";
+import { GrowveDesignSystemCaseStudy } from "@/components/case-study/GrowveDesignSystemCaseStudy";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -57,7 +60,7 @@ export default async function ProjectPage({ params }: PageProps) {
           { name: project.title, path: `/work/${project.slug}` },
         ])}
       />
-      {slug === "redfox-courier" ? <RedFoxCaseStudy /> : <CaseStudyLayout project={project} />}
+      {slug === "redfox-courier" ? <RedFoxCaseStudy /> : slug === "automation-suite" ? <GrowveCaseStudy /> : slug === "onboarding-revamp" ? <GrowveDesignSystemCaseStudy /> : slug === "design-editor" ? <AtlanticOceanCaseStudy /> : <CaseStudyLayout project={project} />}
     </>
   );
 }

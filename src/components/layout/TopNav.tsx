@@ -1,13 +1,14 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { House, Folder, CircleUserRound, FileText } from "lucide-react";
+import HomeOutlined from "@mui/icons-material/HomeOutlined";
+import WorkOutline from "@mui/icons-material/WorkOutlined";
+import PersonOutline from "@mui/icons-material/PersonOutlined";
+import DescriptionOutlined from "@mui/icons-material/DescriptionOutlined";
 import { siteConfig } from "@/data/site";
 
-const HOME_ICON = "/images/nav/home.svg";
-const GENERIC_ICON = "/images/nav/generic.svg";
+const navIcons = { Home: HomeOutlined, Projects: WorkOutline, About: PersonOutline, Resume: DescriptionOutlined };
 
 export function TopNav() {
   const pathname = usePathname();
@@ -24,7 +25,7 @@ export function TopNav() {
               ? pathname === "/"
               : pathname === link.href || pathname.startsWith(`${link.href}/`);
           const external = link.href.endsWith(".pdf");
-          const MobileIcon = { Home: House, Projects: Folder, About: CircleUserRound, Resume: FileText }[link.label];
+          const Icon = navIcons[link.label];
           return (
             <Link
               key={link.href}
@@ -34,15 +35,7 @@ export function TopNav() {
               className="site-nav-link flex items-center gap-2 text-sm font-medium whitespace-nowrap"
               style={{ color: isActive ? "var(--color-foreground)" : "var(--color-muted-foreground)" }}
             >
-              <Image
-                className="desktop-nav-icon"
-                src={isActive ? HOME_ICON : GENERIC_ICON}
-                alt=""
-                width={20}
-                height={20}
-                aria-hidden
-              />
-              <MobileIcon className="mobile-nav-icon" size={14} aria-hidden="true" />
+              <Icon className="site-nav-icon" aria-hidden="true" sx={{ fontSize: 18, flexShrink: 0 }} />
               {link.label}
             </Link>
           );

@@ -2,23 +2,23 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 
 const folders = [
+  {
+    slug: "automation-suite",
+    name: "Growve CRM (internal)",
+    role: "Product Design",
+    color: "#4fd8a0",
+  },
   { slug: "redfox-courier", name: "RedFox Courier", role: "Logistics", color: "#ff8a3d" },
   {
     slug: "design-editor",
-    name: "Design Editor",
+    name: "Atlantic Ocean {ecommerce website}",
     role: "Design Tools",
     color: "#9d8cff",
   },
   {
-    slug: "automation-suite",
-    name: "Automation Suite",
-    role: "Product Design",
-    color: "#4fd8a0",
-  },
-  {
     slug: "onboarding-revamp",
-    name: "Onboarding",
-    role: "UX Research",
+    name: "Growve Design System",
+    role: "UI/UX Design",
     color: "#ff5c7a",
   },
 ];
@@ -105,7 +105,7 @@ function FolderItem({ folder }: { folder: (typeof folders)[number] }) {
 export function ScreenFolders() {
   return (
     <div
-      className="crt-screen @container absolute box-border flex flex-col overflow-hidden px-[3.6%] pb-[3.2%] pt-[2.6%]"
+      className="crt-screen @container absolute box-border hidden flex-col md:flex overflow-hidden px-[3.6%] pb-[3.2%] pt-[2.6%]"
       style={{
         left: "20.9%",
         top: "20.3%",
@@ -130,5 +130,29 @@ export function ScreenFolders() {
       <div className="crt-overlay" aria-hidden />
       <div className="crt-noise" aria-hidden />
     </div>
+  );
+}
+
+/** Readable project links with touch targets on smaller screens. */
+export function MobileProjects() {
+  return (
+    <nav aria-label="Featured projects" className="mb-12 w-full max-w-lg text-left md:hidden">
+      <h2 className="mb-3 text-sm font-semibold text-muted-foreground">Explore my projects</h2>
+      <div className="grid grid-cols-1 gap-3 min-[400px]:grid-cols-2">
+        {folders.map((folder) => (
+          <Link
+            key={folder.slug}
+            href={`/work/${folder.slug}`}
+            className="flex min-h-16 items-center justify-between gap-3 rounded-xl border border-neutral-200 bg-surface p-4 transition-colors hover:bg-surface-hover"
+          >
+            <span className="min-w-0">
+              <span className="block text-sm font-semibold">{folder.name}</span>
+              <span className="mt-1 block text-xs text-muted-foreground">{folder.role}</span>
+            </span>
+            <span aria-hidden className="shrink-0">&rarr;</span>
+          </Link>
+        ))}
+      </div>
+    </nav>
   );
 }

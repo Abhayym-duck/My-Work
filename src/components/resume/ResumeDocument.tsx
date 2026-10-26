@@ -15,7 +15,7 @@ function SectionHeading({ children }: { children: string }) {
 
 export function ResumeDocument() {
   return (
-    <div className="font-sans leading-[1.5] text-neutral-800">
+    <div className="font-sans [overflow-wrap:anywhere] leading-[1.5] text-neutral-800">
       <header>
         <h1 className="text-[2.3em] leading-tight font-bold text-neutral-900">
           {resume.name}
@@ -27,7 +27,12 @@ export function ResumeDocument() {
           {resume.contact.map((item, index) => (
             <span key={item.label}>
               {index > 0 && <span aria-hidden> | </span>}
-              <a href={item.href}>{item.label}</a>
+              <a
+                href={item.href}
+                className="text-blue-700 underline decoration-blue-700/60 underline-offset-2 hover:text-blue-900"
+              >
+                {item.label}
+              </a>
             </span>
           ))}
         </p>
@@ -45,7 +50,7 @@ export function ResumeDocument() {
             {job.roles.map((role) => (
               <div
                 key={role.title}
-                className="flex items-baseline justify-between gap-4"
+                className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4 print:flex-row print:items-baseline print:justify-between print:gap-4"
               >
                 <h3 className="font-bold text-neutral-900">
                   {job.company} —{" "}
@@ -90,7 +95,7 @@ export function ResumeDocument() {
 
       <section>
         <SectionHeading>Education</SectionHeading>
-        <div className="mt-[0.8em] flex items-baseline justify-between gap-4">
+        <div className="mt-[0.8em] flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4 print:flex-row print:items-baseline print:justify-between print:gap-4">
           <p>
             <strong className="font-semibold text-neutral-900">
               {resume.education.degree}

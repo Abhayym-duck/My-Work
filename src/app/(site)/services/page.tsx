@@ -39,7 +39,7 @@ export default function ServicesPage() {
         description="A few of the ways I typically work with teams — reach out if you have something else in mind."
       />
 
-      <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-3">
+      <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         {services.map((service) => (
           <div key={service.title} className="flex flex-col gap-3">
             <Tag>{service.title}</Tag>
