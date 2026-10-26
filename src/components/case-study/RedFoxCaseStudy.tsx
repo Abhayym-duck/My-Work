@@ -14,14 +14,12 @@ function Note({ label, children }: { label: string; children: ReactNode }) {
 export function RedFoxCaseStudy() {
   return <article className={s.page}>
     <header className={s.intro} id="top">
-      <div className={s.introTop}>
-        <p className={s.eyebrow}>RedFox Courier</p>
-        <a className={s.viewProject} href="https://redfoxcourier.com/" target="_blank" rel="noopener noreferrer" aria-label="View project (opens in a new tab)">
-          View project <ArrowUpRight size={15} aria-hidden="true" />
-        </a>
-      </div>
+      <p className={s.eyebrow}>RedFox Courier</p>
       <h1>Making a complex shipping workflow easier to navigate.</h1>
       <p>RedFox is an international shipping platform. We worked as a team on the customer booking flow and internal CRM. Our challenge was to decide what information each person needed, when they needed it, and how the interface should help them act on it.</p>
+      <a className={s.viewProject} href="https://redfoxcourier.com/" target="_blank" rel="noopener noreferrer" aria-label="View project (opens in a new tab)">
+        View project <ArrowUpRight size={15} aria-hidden="true" />
+      </a>
       <div className={s.metadata}>Product Design<br />Customer Experience · CRM · Order Management</div>
     </header>
     <figure className={s.productImage}>

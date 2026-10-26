@@ -92,15 +92,8 @@
 .productImage { width: 100%; margin: 24px 0 64px; }
 .productImage img { display: block; width: 100%; height: auto; }
 
-.introTop {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 18px;
-}
-.introTop .eyebrow { margin: 0; }
 .page .viewProject {
+  margin-top: 4px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
