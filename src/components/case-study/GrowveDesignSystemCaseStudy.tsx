@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import type { ReactNode } from "react";
 import { ZoomableImage } from "./ZoomableImage";
 import s from "./RedFoxCaseStudy.module.css";
@@ -12,6 +13,9 @@ export function GrowveDesignSystemCaseStudy() {
     <header className={s.intro} id="top">
       <p className={s.eyebrow}>Growve Design System</p>
       <h1>A scalable design foundation built to unify the Growve product ecosystem.</h1>
+      <a className={s.viewProject} href="https://growve-design-guidelines.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="View project (opens in a new tab)">
+        View project <ArrowUpRight size={15} aria-hidden="true" />
+      </a>
       <div className={s.metadata}>Product Designer · 2025</div>
     </header>
     <figure className={s.productImage}>
