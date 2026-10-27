@@ -24,105 +24,68 @@ export interface ResumeExperience {
 
 export const resume = {
   name: "Abhay Maske",
-  title: "Product Experience Designer",
+  title: "Product Designer | UI/UX Designer — B2B SaaS, CRM & Design Systems",
+  location: "Mumbai, India",
   contact: [
-    { label: "9963995619", href: "tel:+919963995619" },
-    { label: "abhay.uiux@gmail.com", href: "mailto:abhay.uiux@gmail.com" },
-    {
-      label: "linkedin.com/in/abhay-maske-866a93200",
-      href: "https://www.linkedin.com/in/abhay-maske-866a93200/",
-    },
+    { label: "+91 9963995619", href: "tel:+919963995619" },
+    { label: "abhay.uiux@gmail.com", href: "mailto:abhay.uiux@gmail.com", title: "abhay.uiux@gmail.com" },
+    { label: "Portfolio", href: "https://abhay-maske-portfolio.vercel.app/" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/abhay-maske-866a93200/" },
   ],
   summary:
-    "Product Experience Designer with experience designing SaaS, CRM, logistics, e-commerce and fintech products. Strong at simplifying complex workflows, structuring information and building scalable UI systems, and at working with product managers, developers and stakeholders to turn business requirements into functional digital experiences.",
+    "Product Designer with 3+ years of experience designing SaaS, CRM, logistics, e-commerce and fintech products. Specializes in simplifying complex operational workflows, structuring information and building scalable UI systems. Experienced in taking products from requirements and workflows through interface design, design systems, developer handoff and design QA, while working closely with product managers, developers and stakeholders.",
   experience: [
     {
       company: "Growve Logistics",
       roles: [{ title: "Product Experience Designer", dates: "Oct 2025 – Present" }],
       bullets: [
-        {
-          lead: "RedFoxCourier",
-          text: "Ideated and designed a fully functional CRM based on RedFox's backend and operational workflow, covering customer and shipment workflows, verification, item details, weight and dimensions, payment and post-payment operational stages.",
-        },
-        {
-          lead: "RedFoxCourier",
-          text: "Designed the landing page and lead-generation flow.",
-        },
-        {
-          lead: "Growve CRM",
-          text: "Reworked the internal CRM, improving workflow structure, functionality and UI consistency so users can navigate and complete operational workflows more easily.",
-        },
-        {
-          lead: "Growve Design System",
-          text: "Created an internal design system to standardize and scale UI across multiple internal projects: color and design tokens, typography, spacing, reusable components (buttons, forms, tables), Figma variables and documentation.",
-        },
-        {
-          lead: "Walherb",
-          text: "Designed the landing page for an e-commerce site selling childcare supplements and healthcare products. Collaborated with the Product Manager and developers to deliver on time, and used Figma and Claude to build a functional site from the design (walherb.vercel.app).",
-        },
-        {
-          lead: "Growve Logistics website",
-          text: "Designed a logistics landing page with a focus on visual hierarchy and clear product and service communication.",
-        },
-        {
-          lead: "Veltora (ongoing)",
-          text: "Designing the landing page for a travel-bag product, focused on product presentation, visual storytelling and conversion.",
-        },
+        { text: "Designed RedFox Courier’s operations CRM, landing page and lead-generation flow end-to-end, translating backend data and operational workflows into clear customer and shipment experiences—from verification, item details, weight and dimensions to payment and post-payment stages—with a focus on information hierarchy, service communication and user journey." },
+        { text: "Structured complex operational workflows and edge cases into clear, task-oriented interfaces for internal users." },
+        { text: "Built the Growve Design System as a shared UI foundation across multiple internal projects, covering color, typography, spacing, design tokens, Figma variables, reusable components and documentation." },
+        { text: "Redesigned the Growve internal CRM, improving workflow structure, functionality and UI consistency across operational experiences." },
+        { text: "Designed the Walherb e-commerce experience for childcare supplements and healthcare products, collaborating with the Product Manager and developers to translate designs into a working website." },
+        { text: "Took the Walherb design from Figma to a deployed working build using AI-assisted development with Claude." },
       ],
     },
     {
       company: "Kalpins.co",
       roles: [{ title: "UI/UX Designer", dates: "Oct 2024 – Sep 2025" }],
       bullets: [
-        {
-          text: "Worked as the solo designer with stakeholders and developers on dashboards, landing pages and dynamic loader and empty-state experiences.",
-        },
+        { text: "Worked as the sole designer, owning UI/UX design from requirements and workflows through final interfaces in collaboration with stakeholders and developers." },
+        { text: "Designed dashboards, landing pages and product interfaces with clear information hierarchy, scalable UI patterns, and loading, empty and data-availability states." },
       ],
     },
     {
       company: "Hygwell",
-      roles: [{ title: "Product Designer (Freelance)", dates: "Apr 2024 – Aug 2024" }],
+      roles: [{ title: "Product Designer, Freelance", dates: "Apr 2024 – Aug 2024" }],
       bullets: [
-        {
-          text: "Shaped the product's visual experience from research and UI design through graphics, while coordinating the development process.",
-        },
+        { text: "Led product design across research, UI design and visual communication, translating product requirements into structured digital experiences." },
+        { text: "Worked closely with developers throughout implementation to maintain design intent and coordinate the development process." },
       ],
     },
     {
       company: "Bombay Tone",
       roles: [
-        { title: "Jr. UX Designer", dates: "Dec 2023 – Apr 2024" },
+        { title: "Junior UX Designer", dates: "Dec 2023 – Apr 2024" },
         { title: "UX Designer Intern", dates: "Jul 2023 – Nov 2023" },
       ],
       bullets: [
-        {
-          text: "Designed fintech products with a focus on loan websites and app experiences, building hands-on experience in user-centered design.",
-        },
+        { text: "Progressed from UX Design Intern to Junior UX Designer after 5 months." },
+        { text: "Designed fintech experiences including loan websites and app interfaces, working on user flows and interfaces with a user-centered design approach." },
       ],
     },
   ] as ResumeExperience[],
   skills: [
-    {
-      label: "Product Design",
-      items:
-        "UX Design, UI Design, Product Thinking, User Flows, Information Architecture, Interaction Design, Wireframing, Prototyping, Design Systems, Usability, Responsive Design",
-    },
-    {
-      label: "Collaboration",
-      items:
-        "Stakeholder Collaboration, Product Manager Collaboration, Developer Handoff, Design QA, Requirements Analysis",
-    },
-    {
-      label: "Technical / AI",
-      items:
-        "Figma Variables, Design Tokens, AI-Assisted Prototyping, Front-End Collaboration",
-    },
+    { label: "Product & UX", items: "Product Thinking, UX Design, User Flows, Information Architecture, Interaction Design, Wireframing, Prototyping, Responsive Design, Usability" },
+    { label: "AI & Design-to-Build", items: "AI-Assisted Prototyping, AI-Assisted Development, Claude, Design-to-Deployment" },
+    { label: "Tools", items: "Figma, Claude, VS Code" },
+    { label: "Domains", items: "B2B SaaS, CRM, Logistics, E-commerce, Fintech" },
   ],
-  tools: "Figma, Figma Variables, Claude, Adobe Creative Suite",
+  tools: "Figma, Claude, VS Code",
   education: {
     degree: "Bachelor of Science in Information Technology",
-    school: "Kirti M. Doongursee College, Dadar",
+    school: "Kirti M. Doongursee College, Dadar, Mumbai",
     dates: "2020 – 2023",
   },
-  certification: "Google UX Design Professional Certificate",
+  certification: "Google UX Design Professional Certificate | 2023",
 };

@@ -7,7 +7,7 @@ import { ResumeDocument } from "@/components/resume/ResumeDocument";
 export const metadata: Metadata = buildMetadata({
   title: "Resume — Abhay Maske",
   description:
-    "One-page resume of Abhay Maske, Product Experience Designer for SaaS, CRM, logistics and e-commerce products.",
+    "Resume of Abhay Maske, Product Designer and UI/UX Designer with 3+ years of experience in B2B SaaS, CRM and design systems.",
   path: "/resume",
 });
 

@@ -10,12 +10,12 @@ export const metadata: Metadata = {
 export default function ResumePrintPage() {
   return (
     <>
-      <style>{"@page { size: A4; margin: 0 } html, body { background: #fff }"}</style>
+      <style>{"@page { size: A4; margin: 12mm 14mm } html, body { background: #fff }"}</style>
       <div
-      className="mx-auto box-border h-[297mm] w-[210mm] overflow-hidden bg-white px-[14mm] py-[10mm]"
-      style={{ fontSize: "8.4pt" }}
-    >
-      <ResumeDocument />
+        className="mx-auto box-border w-full bg-white print:[&_h2]:break-after-avoid print:[&_h3]:break-after-avoid print:[&_li]:break-inside-avoid"
+        style={{ fontSize: "10pt" }}
+      >
+        <ResumeDocument />
       </div>
     </>
   );

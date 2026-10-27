@@ -23,19 +23,19 @@ export function ResumeDocument() {
         <p className="text-[1.2em] font-medium text-neutral-700">
           {resume.title}
         </p>
-        <p className="mt-[0.6em]">
-          {resume.contact.map((item, index) => (
-            <span key={item.label}>
-              {index > 0 && <span aria-hidden> | </span>}
-              <a
-                href={item.href}
-                className="text-blue-700 underline decoration-blue-700/60 underline-offset-2 hover:text-blue-900"
-              >
-                {item.label}
-              </a>
-            </span>
+        <p className="mt-[0.6em]">{resume.location}</p>
+        <div className="mt-[0.6em] flex flex-wrap gap-2">
+          {resume.contact.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              title={item.title ?? item.label}
+              className="inline-flex items-center justify-center rounded-full border border-neutral-300 bg-neutral-50 px-[1em] py-[0.4em] text-[0.95em] font-medium text-neutral-900 transition-colors hover:border-neutral-500 hover:bg-neutral-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700"
+            >
+              {item.label}
+            </a>
           ))}
-        </p>
+        </div>
       </header>
 
       <section>
@@ -86,10 +86,7 @@ export function ResumeDocument() {
               {group.items}
             </li>
           ))}
-          <li className="mt-[0.3em]">
-            <strong className="font-semibold text-neutral-900">Tools:</strong>{" "}
-            {resume.tools}
-          </li>
+
         </ul>
       </section>
 
