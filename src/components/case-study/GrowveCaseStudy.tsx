@@ -73,8 +73,26 @@ export function GrowveCaseStudy() {
       </figure>
       <h3>Shipment tracking, returns and claims</h3>
       <p>Made shipment stages, including international journeys, easier to follow, with visibility into returns and safety claims that needed attention.</p>
+      <figure className={s.productImage}>
+        <ZoomableImage
+          src="/images/projects/Growve CRM Internal/International SHipment journey.png?v=bb2444d081"
+          alt="Growve CRM international shipment journey screens showing shipment stages and tracking information."
+          width={5760}
+          height={3224}
+          sizes="(max-width: 600px) calc(100vw - 40px), 560px"
+        />
+      </figure>
       <h3>Warehouse inventory and resale</h3>
       <p>Helped teams track warehouse stock and identify products that could be sold again.</p>
+      <figure className={s.productImage}>
+        <ZoomableImage
+          src="/images/projects/Growve CRM Internal/Warehouse resell flow.png?v=f48fd387cf"
+          alt="Growve CRM warehouse inventory screens showing the workflow for reselling stored products."
+          width={5760}
+          height={3224}
+          sizes="(max-width: 600px) calc(100vw - 40px), 560px"
+        />
+      </figure>
     </Chapter>
 
     <Chapter number="06" title="Result / Impact">
