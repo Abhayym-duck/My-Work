@@ -9,11 +9,11 @@ import { redfoxCourierStory } from "@/data/stories/redfox-courier";
 export const projects: Project[] = [
   {
     slug: "automation-suite",
-    title: "Growve CRM (internal)",
-    shortDescription: "Redesigning an internal operations platform around orders, inventory, warehouses, returns, claims and international shipping.",
+    title: "Growve CRM",
+    shortDescription: "Modernising a complex CRM workflow into a clearer CRM product experience.",
     category: "UX Design",
     year: 2025,
-    role: "Product Designer",
+    role: "Product Experience Designer",
     tools: [],
     coverImage: {
       src: "/images/projects/automation-suite/cover.svg",
@@ -22,7 +22,7 @@ export const projects: Project[] = [
       height: 1200,
     },
     galleryImages: [],
-    challenge: "Growve had outgrown an internal system that had evolved alongside the business. Increasing operational complexity made connected workflows harder to manage.",
+    challenge: "A CRM handling around 1,000+ orders daily had become outdated and difficult to navigate, requiring significant manual effort to track order journeys and manage new orders.",
     solution: "Redesigned the internal product around the information, states and actions needed across orders, inventory, warehouses, shipping, returns and claims.",
     process: [],
     outcomes: [
@@ -30,9 +30,13 @@ export const projects: Project[] = [
       "Clearer representation of order and shipment journeys, including returns and claims.",
       "Support for international operations and visibility into warehouse inventory with potential for resale.",
     ],
-    metrics: [],
+    metrics: [
+      { value: "20%", label: "Growth in order processing" },
+      { value: "15%", label: "Increase in orders handled" },
+      { value: "25%", label: "Faster delivery to customers" },
+    ],
     seo: {
-      title: "Growve CRM (internal) - Case Study",
+      title: "Growve CRM - Case Study",
       description: "Redesigning Growve's internal operations platform around orders, warehouses, inventory, returns, claims and international shipping.",
       keywords: ["product design", "operational systems", "internal tools", "dropshipping"],
       ogImage: "/images/projects/automation-suite/cover.svg",

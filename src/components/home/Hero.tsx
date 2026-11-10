@@ -6,12 +6,17 @@ import { ScreenFolders } from "@/components/home/ScreenFolders";
 
 export function Hero() {
   const { hero } = siteConfig;
+  const subheader = hero.subtext
+    .split(/(Growve|shaping CRM, internal tools, and e-commerce experiences)/)
+    .map((part, index) =>
+      index % 2 === 1 ? <strong key={index}>{part}</strong> : part,
+    );
 
   return (
     <section className="home-hero font-jb flex flex-col items-center px-6 pt-32 text-center sm:pt-40">
       <div className="mobile-home-intro">
-        <h1>Hey, I’m Abhay Maske</h1>
-        <p className="font-normal">I overthink so users don’t have to, designing clear, intuitive experiences from 3+ years of product design experience.</p>
+        <h1>{hero.lines.join(" ")}</h1>
+        <p className="font-normal">{subheader}</p>
         <Link href="/work" className="mobile-projects-button">View Projects <ArrowUpRight size={20} aria-hidden="true" /></Link>
       </div>
       <h1 className="desktop-home-copy max-w-[835px] text-[32px] leading-[1.3] font-medium text-foreground sm:text-[48px] sm:leading-[62.4px]">
@@ -23,9 +28,7 @@ export function Hero() {
       </h1>
 
       <p className="desktop-home-copy mt-5 w-full max-w-[760px] font-sans text-base font-normal leading-[20.8px] text-muted-foreground">
-        <span className="block">{hero.subtext.split(" good use")[0]}</span>
-        <span className="block">good use{hero.subtext.split(" good use")[1].split(" easier")[0]}</span>
-        <span className="block">easier{hero.subtext.split(" easier")[1]}</span>
+        {subheader}
       </p>
 
       <section id="mobile-projects" className="mobile-home-projects" aria-labelledby="mobile-projects-title">
