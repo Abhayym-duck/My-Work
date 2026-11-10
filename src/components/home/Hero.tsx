@@ -19,7 +19,7 @@ export function Hero() {
         <p className="font-normal">{subheader}</p>
         <Link href="/work" className="mobile-projects-button">View Projects <ArrowUpRight size={20} aria-hidden="true" /></Link>
       </div>
-      <h1 className="desktop-home-copy max-w-[835px] text-[32px] leading-[1.3] font-medium text-foreground sm:text-[48px] sm:leading-[62.4px]">
+      <h1 className="desktop-home-copy max-w-[835px] text-[30px] leading-[1.3] font-medium text-foreground sm:text-[44px] sm:leading-[57.2px]">
         {hero.lines.map((line) => (
           <span key={line} className="block">
             {line}

@@ -14,7 +14,7 @@ export const siteConfig = {
   email: "abhay.uiux@gmail.com",
   avatar: "/images/hero/potrait.jpg",
   hero: {
-    lines: ["Hey, I’m Abhay Maske, a product designer focused on clarity, simplicity, and thoughtful experiences."],
+    lines: ["Hey, I’m Abhay Maske, a product designer focused on clarity."],
     subtext:
       "Leading product design at Growve, shaping CRM, internal tools, and e-commerce experiences, turning complex workflows into simple, scalable products.",
   },
