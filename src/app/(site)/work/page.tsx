@@ -16,7 +16,7 @@ export default function WorkPage() {
   const banners = [
     { src: "/images/projects/banners/growve-crm.png", alt: "Growve CRM dashboard design" },
     { src: "/images/projects/banners/redfox.png", alt: "RedFox Courier website design" },
-    { src: "/images/projects/banners/globe365-india.png", alt: "Globe365 India storefront design" },
+    { src: "/images/projects/banners/atlantic-ocean.png", alt: "Atlantic Ocean e-commerce website preview" },
     { src: "/images/projects/banners/growve-design-system.png", alt: "Growve Design System guidelines" },
   ];
 

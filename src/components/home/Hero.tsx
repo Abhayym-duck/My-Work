@@ -37,7 +37,7 @@ export function Hero() {
           {[
             { title: "Growve CRM", category: "CRM", image: "growve-crm", href: "/work/automation-suite", icon: PanelsTopLeft },
             { title: "RedFox Courier", category: "Logistics", image: "redfox", href: "/work/redfox-courier", icon: Truck },
-            { title: "Atlantic Ocean", category: "eCommerce", image: "globe365-india", href: "/work/design-editor", icon: ShoppingCart },
+            { title: "Atlantic Ocean", category: "eCommerce", image: "atlantic-ocean", href: "/work/design-editor", icon: ShoppingCart },
             { title: "Growve Design System", category: "Design System", image: "growve-design-system", href: "/work/onboarding-revamp", icon: Component },
           ].map(({ title, category, image, href, icon: Icon }) => (
             <li key={title}>

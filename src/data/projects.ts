@@ -86,7 +86,7 @@ export const projects: Project[] = [
     role: "Product Designer",
     tools: [],
     coverImage: {
-      src: "/images/projects/banners/globe365-india.png",
+      src: "/images/projects/banners/atlantic-ocean.png",
       alt: "Atlantic Ocean e-commerce website overview",
       width: 968,
       height: 560,
@@ -101,7 +101,7 @@ export const projects: Project[] = [
       title: "Atlantic Ocean - E-commerce Website Case Study",
       description: "Designing a consistent e-commerce experience across product discovery, listings, product details, cart and checkout.",
       keywords: ["e-commerce", "UI/UX design", "visual design", "responsive design"],
-      ogImage: "/images/projects/banners/globe365-india.png",
+      ogImage: "/images/projects/banners/atlantic-ocean.png",
     },
     featured: true,
     published: true,

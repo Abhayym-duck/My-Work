@@ -19,7 +19,7 @@ export function AtlanticOceanCaseStudy() {
       <p>Clear product hierarchy and reusable patterns help shoppers scan prices, offers and key details across a broad catalogue, while keeping the journey consistent from discovery through checkout. This gives the business a flexible interface foundation for adding categories without reinventing the shopping experience.</p>
     </section>
     <figure className={s.productImage}>
-      <ZoomableImage src="/images/projects/Atlantic%20ocean.png" alt="Atlantic Ocean e-commerce website overview." width={968} height={560} sizes="(max-width: 600px) calc(100vw - 40px), 560px" preload />
+      <ZoomableImage src="/images/projects/banners/atlantic-ocean.png" alt="Atlantic Ocean e-commerce website overview." width={968} height={560} sizes="(max-width: 600px) calc(100vw - 40px), 560px" preload />
     </figure>
 
     <Chapter title="Overview">
