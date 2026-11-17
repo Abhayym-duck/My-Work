@@ -22,6 +22,10 @@ export function RedFoxCaseStudy() {
       </a>
       <div className={s.metadata}>Product Design<br />Customer Experience · CRM · Order Management</div>
     </header>
+    <section className={s.chapter} aria-labelledby="business-impact">
+      <header><p className={s.eyebrow}>Business impact</p><h2 id="business-impact">A clearer path from quote to pickup.</h2></header>
+      <p>The staged booking flow clarifies service, price and required information, while the CRM gives operations a structured way to find shipments and act on blockers. RedFox was not fully live, so these are intended business benefits; production impact has not yet been measured.</p>
+    </section>
     <figure className={s.productImage}>
       <ZoomableImage
         src="/images/projects/redfox-courier/ux-showcase.png"

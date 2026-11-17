@@ -14,8 +14,12 @@ export function AtlanticOceanCaseStudy() {
       <h1>Designing a scalable e-commerce experience focused on clean UI, product discovery, and usability.</h1>
       <div className={s.metadata}>Product Designer · 2025</div>
     </header>
+    <section className={s.chapter} aria-labelledby="business-impact">
+      <header><p className={s.eyebrow}>Business impact</p><h2 id="business-impact">A shopping experience built to support product discovery at scale.</h2></header>
+      <p>Clear product hierarchy and reusable patterns help shoppers scan prices, offers and key details across a broad catalogue, while keeping the journey consistent from discovery through checkout. This gives the business a flexible interface foundation for adding categories without reinventing the shopping experience.</p>
+    </section>
     <figure className={s.productImage}>
-      <ZoomableImage src="/images/projects/banners/globe365-india.png" alt="Atlantic Ocean e-commerce website overview." width={968} height={560} sizes="(max-width: 600px) calc(100vw - 40px), 560px" preload />
+      <ZoomableImage src="/images/projects/Atlantic%20ocean.png" alt="Atlantic Ocean e-commerce website overview." width={968} height={560} sizes="(max-width: 600px) calc(100vw - 40px), 560px" preload />
     </figure>
 
     <Chapter title="Overview">

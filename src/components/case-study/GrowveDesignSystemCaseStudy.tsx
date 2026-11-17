@@ -18,6 +18,10 @@ export function GrowveDesignSystemCaseStudy() {
       </a>
       <div className={s.metadata}>Product Designer · 2025</div>
     </header>
+    <section className={s.chapter} aria-labelledby="business-impact">
+      <header><p className={s.eyebrow}>Business impact</p><h2 id="business-impact">A reusable foundation for faster product delivery.</h2></header>
+      <p>The shared components and design tokens gave teams a consistent starting point across Growve applications, reducing repeated design work and making developer handoffs more predictable. This helped the product ecosystem scale without rebuilding common interface patterns for each tool.</p>
+    </section>
     <figure className={s.productImage}>
       <ZoomableImage src="/images/projects/banners/growve-design-system.png" alt="Growve Design Guidelines overview." width={968} height={560} sizes="(max-width: 600px) calc(100vw - 40px), 560px" preload />
     </figure>

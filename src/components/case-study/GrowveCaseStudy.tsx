@@ -23,6 +23,11 @@ export function GrowveCaseStudy() {
       </dl>
     </header>
 
+    <section className={s.chapter} aria-labelledby="business-impact">
+      <header><p className={s.eyebrow}>Business impact</p><h2 id="business-impact">More orders processed, delivered faster.</h2></header>
+      <p>After the CRM redesign, Growve reported 20% growth in order processing, 15% more orders handled and 25% faster delivery to customers. The improved operational capacity also helped the business expand into e-commerce.</p>
+    </section>
+
     <Chapter number="01" title="The challenge">
       <p>This was a completely new domain for me. With no detailed documentation, I had to learn the complex e-commerce, dropshipping and logistics workflows before designing. The goal was to speed up task completion and save time, money and resources without disrupting existing workflows.</p>
     </Chapter>
